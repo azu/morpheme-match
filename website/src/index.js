@@ -21,7 +21,7 @@ const appContext = new Context({
 // start logger
 const logger = new AlminLogger();
 logger.startLogging(appContext);
-// Singleton
+// global
 AppLocator.context = appContext;
 // entry point
 ReactDOM.render(<AppBootStrap />, document.getElementById("js-app"));
