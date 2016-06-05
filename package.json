@@ -32,7 +32,7 @@
     "japanese",
     "text"
   ],
-  "description": "",
+  "description": "match function that match token(形態素解析) with sentence.",
   "devDependencies": {
     "babel-cli": "^6.9.0",
     "babel-loader": "^6.2.4",
