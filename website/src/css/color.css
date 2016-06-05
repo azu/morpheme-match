@@ -1,0 +1,9 @@
+:root {
+    /* accent color */
+    --yellow-color: #fce473;
+    /* border color of container*/
+    --container-border-color: var(--yellow-color);
+    /* background color */
+    --InputForm-label--background-color: var(--yellow-color);
+    --AnalyzedTable-label--background-color: var(--yellow-color);
+}

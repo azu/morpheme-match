@@ -1,0 +1,15 @@
+.InputForm {
+    width: 100%;
+}
+
+.InputForm-input {
+    width: 100%;
+}
+
+.InputForm-label {
+    background: var(--InputForm-label--background-color);
+    border-radius: 3px 3px 0 0;
+    padding: 3px 5px;
+    margin: 0;
+    font-weight: bold;
+}

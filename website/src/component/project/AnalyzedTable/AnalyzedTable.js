@@ -24,24 +24,28 @@ export default class AnalyzedTable extends React.Component {
         const tokenTrList = tokens.map((token, index) => {
             return <AnalyzedTaken key={index} token={token}/>
         });
-        return <table width="100%" class="table">
-            <thead>
-            <tr>
-                <th>表層形</th>
-                <th>品詞</th>
-                <th>品詞細分類1</th>
-                <th>品詞細分類2</th>
-                <th>品詞細分類3</th>
-                <th>活用型</th>
-                <th>活用形</th>
-                <th>基本形</th>
-                <th>読み</th>
-                <th>発音</th>
-            </tr>
-            </thead>
-            <tbody>
-            {tokenTrList}
-            </tbody>
-        </table>
+        return <div className="AnalyzedTable">
+            <label className="AnalyzedTable-label">解析結果</label>
+            <table width="100%" className="table">
+                <thead>
+                <tr>
+                    <th>表層形</th>
+                    <th>品詞</th>
+                    <th>品詞細分類1</th>
+                    <th>品詞細分類2</th>
+                    <th>品詞細分類3</th>
+                    <th>活用型</th>
+                    <th>活用形</th>
+                    <th>基本形</th>
+                    <th>読み</th>
+                    <th>発音</th>
+                </tr>
+                </thead>
+                <tbody>
+                {tokenTrList}
+                </tbody>
+            </table>
+
+        </div>
     }
 }

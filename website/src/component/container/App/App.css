@@ -1,0 +1,13 @@
+:root {
+    --App--max-width: 1200px;
+}
+
+.App {
+    max-width: var(--App--max-width);
+    margin: 1rem auto;
+    border: 1px solid var(--container-border-color);
+}
+
+.App-InputForm {
+    margin-bottom: 1rem;
+}

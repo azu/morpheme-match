@@ -21,6 +21,7 @@ export default class App extends React.Component {
         };
         context.onChange(onChangeHandler);
     }
+
     render() {
         /**
          * @type {AnalyzerState}
@@ -30,7 +31,9 @@ export default class App extends React.Component {
             AppLocator.context.useCase(UpdateAnalyzedTableUseCase.create()).execute(text);
         };
         return <div className="App">
-            <InputForm onSubmit={onSubmit}/>
+            <div className="App-InputForm">
+                <InputForm onSubmit={onSubmit}/>
+            </div>
             <AnalyzedTable tokens={analyzer.tokens}/>
         </div>
     }
