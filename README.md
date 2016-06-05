@@ -1,6 +1,6 @@
 # morpheme-match
 
-
+形態素解析したトークンを元に、文章にマッチするトークンが含まれているかをチェックするライブラリ。
 
 ## Install
 
@@ -10,7 +10,113 @@ Install with [npm](https://www.npmjs.com/):
 
 ## Usage
 
-- [ ] Write usage instructions
+### createTokenMatcher(expectedTokens): function
+
+`createTokenMatcher()` return `function(token): { match: boolean, tokens?: Array }`.
+
+We want to check "名詞かもしれない" contain "かも" token. 
+Write following:
+
+See example code with [azu.github.io/morpheme-match/#名詞(かも)しれない](http://azu.github.io/morpheme-match/#名詞(かも)しれない).
+
+```js
+const createTokenMatcher = require("morpheme-match");
+const expectToken = createTokenMatcher([
+    {
+        "surface_form": "かも",
+        "pos": "助詞",
+        "pos_detail_1": "副助詞",
+        "pos_detail_2": "*",
+        "pos_detail_3": "*",
+        "conjugated_type": "*",
+        "conjugated_form": "*",
+        "basic_form": "かも",
+        "reading": "カモ",
+        "pronunciation": "カモ"
+    }
+]);
+const tokens = [
+    {
+        "surface_form": "名詞",
+        "pos": "名詞",
+        "pos_detail_1": "一般",
+        "pos_detail_2": "*",
+        "pos_detail_3": "*",
+        "conjugated_type": "*",
+        "conjugated_form": "*",
+        "basic_form": "名詞",
+        "reading": "メイシ",
+        "pronunciation": "メイシ"
+    },
+    // Hit!
+    {
+        "surface_form": "かも",
+        "pos": "助詞",
+        "pos_detail_1": "副助詞",
+        "pos_detail_2": "*",
+        "pos_detail_3": "*",
+        "conjugated_type": "*",
+        "conjugated_form": "*",
+        "basic_form": "かも",
+        "reading": "カモ",
+        "pronunciation": "カモ"
+    },
+    {
+        "surface_form": "しれ",
+        "pos": "動詞",
+        "pos_detail_1": "自立",
+        "pos_detail_2": "*",
+        "pos_detail_3": "*",
+        "conjugated_type": "一段",
+        "conjugated_form": "未然形",
+        "basic_form": "しれる",
+        "reading": "シレ",
+        "pronunciation": "シレ"
+    },
+    {
+        "surface_form": "ない",
+        "pos": "助動詞",
+        "pos_detail_1": "*",
+        "pos_detail_2": "*",
+        "pos_detail_3": "*",
+        "conjugated_type": "特殊・ナイ",
+        "conjugated_form": "基本形",
+        "basic_form": "ない",
+        "reading": "ナイ",
+        "pronunciation": "ナイ"
+    }
+];
+const result = tokens.some(token => {
+    const {match} = expectToken(token);
+    return match;
+});
+console.log(result);// true
+```
+
+If want to get matched token, write following:
+
+
+```js
+let resultTokens = [];
+const result = tokens.some(token => {
+    const {match, tokens} = expectToken(token);
+    resultTokens = tokens;
+    return match;
+});
+console.log(resultTokens);
+/*
+[ { surface_form: 'かも',
+    pos: '助詞',
+    pos_detail_1: '副助詞',
+    pos_detail_2: '*',
+    pos_detail_3: '*',
+    conjugated_type: '*',
+    conjugated_form: '*',
+    basic_form: 'かも',
+    reading: 'カモ',
+    pronunciation: 'カモ' } ]
+*/
+```
 
 ## Changelog
 

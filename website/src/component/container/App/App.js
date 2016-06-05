@@ -32,16 +32,17 @@ export default class App extends React.Component {
         const analyzer = this.state.analyzer;
         const currentText = analyzer.currentText;
         const outputJSON = analyzer.outputJSON;
+        const permanentURL = analyzer.permanentURL;
         const onSubmit = (text) => {
             AppLocator.context.useCase(UpdateAnalyzedTableUseCase.create()).execute(text);
         };
         return <div className="App">
-            <SideEffectLocationHash text={currentText} />
+            <SideEffectLocationHash text={currentText}/>
             <div className="App-InputForm">
                 <InputForm defaultValue={currentText} onSubmit={onSubmit}/>
             </div>
             <AnalyzedTable tokens={analyzer.tokens}/>
-            <AnalyzedJSONField outputJSON={outputJSON}/>
+            <AnalyzedJSONField permanentURL={permanentURL} outputJSON={outputJSON}/>
             <TestInputForm text="マッチ"/>
         </div>
     }

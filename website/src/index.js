@@ -7,8 +7,7 @@ import AppLocator from "./AppLocator";
 // store
 import AppStoreGroup from "./js/store/AppStore";
 // context
-import {Context}  from "almin";
-import {Dispatcher} from "almin";
+import {Context, Dispatcher}  from "almin";
 import AlminLogger from "almin-logger";
 // instances
 const dispatcher = new Dispatcher();
