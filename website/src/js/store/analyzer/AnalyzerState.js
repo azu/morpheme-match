@@ -2,6 +2,7 @@
 "use strict";
 import ReduceState from "../base/ReduceState";
 const createTokenMatcher = require("morpheme-match");
+import UpdateAnalyzedTextUseCase from "../../use-case/analyzer/UpdateAnalyzedTextUseCase";
 import InitializeUseCase from "../../use-case/InitializeUseCase";
 export default class AnalyzerState extends ReduceState {
     /**
@@ -9,11 +10,16 @@ export default class AnalyzerState extends ReduceState {
      */
     constructor({analyzer = {}, initialized} = {}) {
         super();
+        this.analyzer = analyzer;
         this.initialized = initialized;
         this.currentText = analyzer.currentText;
         this.tokens = analyzer.analyzedTokens || [];
         this.testText = analyzer.testText;
         this.testTokens = analyzer.testTokens || [];
+    }
+
+    get isChangedByUser() {
+        return this.initialized;
     }
 
     get testMatch() {
@@ -50,9 +56,14 @@ export default class AnalyzerState extends ReduceState {
 
     reduce(payload) {
         switch (payload.type) {
-            case InitializeUseCase.Events.initialize:
+            case UpdateAnalyzedTextUseCase.Events.initialize:
                 return new AnalyzerState(Object.assign({}, this, {
                     initialized: true
+                }));
+            // by initial event
+            case InitializeUseCase.Events.initialize:
+                return new AnalyzerState(Object.assign({}, this, {
+                    initialized: false
                 }));
             default:
                 return this;

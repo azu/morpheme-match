@@ -31,5 +31,5 @@ export default class InitializeUseCase extends UseCase {
     }
 }
 InitializeUseCase.Events = {
-    initialize: "initialize-application"
+    initialize: "update-by-internal"
 };
