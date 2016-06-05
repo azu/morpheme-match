@@ -1,5 +1,7 @@
 # morpheme-match
 
+morpheme-match provide match function that match token with sentence.
+
 形態素解析したトークンを元に、文章にマッチするトークンが含まれているかをチェックするライブラリ。
 
 ## Install

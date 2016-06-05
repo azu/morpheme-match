@@ -12,7 +12,7 @@ import AnalyzedJSONField from "../../project/AnalyzedJSONField/AnalyzedJSONField
 import TestInputForm from "../../project/TestInputForm/TestInputForm";
 import SideEffectLocationHash from "../../project/SideEffectLocationHash/SideEffectLocationHash";
 import TestMatchedTable from "../../project/TestMatchedTable/TestMatchedTable";
-
+import GithubCorner from 'react-github-corner';
 export default class App extends React.Component {
     constructor(...args) {
         super(...args);
@@ -43,10 +43,11 @@ export default class App extends React.Component {
             AppLocator.context.useCase(UpdateTestTextUseCase.create()).execute(text);
         };
         return <div className="App">
+            <SideEffectLocationHash text={analyzer.currentText}/>
+            <GithubCorner href="https://github.com/azu/morpheme-match"/>
             <Title className="App-title"><a href="https://github.com/azu/morpheme-match">morpheme-match</a></Title>
             <h2 class="subtitle">形態素解析したトークンを元に、文章にマッチするトークンが含まれているかをチェックするライブラリのデモ</h2>
             <div className="App-container">
-                <SideEffectLocationHash text={analyzer.currentText}/>
                 <div className="App-InputForm">
                     <InputForm defaultValue={analyzer.currentText} onSubmit={updateAnalyzedText}/>
                 </div>
