@@ -57,6 +57,7 @@
     "almin": "^0.4.4",
     "almin-logger": "^1.1.3",
     "bulma": "0.0.28",
+    "classname": "0.0.0",
     "kuromojin": "^1.3.0",
     "map-like": "^1.0.1",
     "morpheme-match": "file:..",

@@ -3,7 +3,11 @@
 }
 
 .App {
+    margin: 1rem auto;
     max-width: var(--App--max-width);
+}
+
+.App-container {
     margin: 1rem auto;
     border: 1px solid var(--container-border-color);
 }

@@ -5,6 +5,7 @@ import AppLocator from "../../../AppLocator";
 import UpdateAnalyzedTextUseCase from "../../../js/use-case/analyzer/UpdateAnalyzedTextUseCase";
 import UpdateTestTextUseCase from "../../../js/use-case/analyzer/UpdateTestTextUseCase";
 // component
+import Title from "../../project/Title/Title";
 import InputForm from "../../project/InputForm/InputForm";
 import AnalyzedTable from "../../project/AnalyzedTable/AnalyzedTable";
 import AnalyzedJSONField from "../../project/AnalyzedJSONField/AnalyzedJSONField";
@@ -42,18 +43,22 @@ export default class App extends React.Component {
             AppLocator.context.useCase(UpdateTestTextUseCase.create()).execute(text);
         };
         return <div className="App">
-            <SideEffectLocationHash text={analyzer.currentText}/>
-            <div className="App-InputForm">
-                <InputForm defaultValue={analyzer.currentText} onSubmit={updateAnalyzedText}/>
-            </div>
-            <div className="App-Analyzed">
-                <AnalyzedTable label="解析結果" tokens={analyzer.tokens}/>
-                <AnalyzedJSONField permanentURL={analyzer.permanentURL} outputJSON={analyzer.outputJSON}/>
-            </div>
-            <div className="App-Test">
-                <TestInputForm text={analyzer.testText} onSubmit={updateTestText}/>
-                <TestMatchedTable match={matchResult.match} value={matchResult.value}/>
-                <AnalyzedTable label="テストの解析結果" tokens={analyzer.testTokens}/>
+            <Title className="App-title"><a href="https://github.com/azu/morpheme-match">morpheme-match</a></Title>
+            <h2 class="subtitle">形態素解析したトークンを元に、文章にマッチするトークンが含まれているかをチェックするライブラリのデモ</h2>
+            <div className="App-container">
+                <SideEffectLocationHash text={analyzer.currentText}/>
+                <div className="App-InputForm">
+                    <InputForm defaultValue={analyzer.currentText} onSubmit={updateAnalyzedText}/>
+                </div>
+                <div className="App-Analyzed">
+                    <AnalyzedTable label="解析結果" tokens={analyzer.tokens}/>
+                    <AnalyzedJSONField permanentURL={analyzer.permanentURL} outputJSON={analyzer.outputJSON}/>
+                </div>
+                <div className="App-Test">
+                    <TestInputForm text={analyzer.testText} onSubmit={updateTestText}/>
+                    <TestMatchedTable match={matchResult.match} value={matchResult.value}/>
+                    <AnalyzedTable label="テストの解析結果" tokens={analyzer.testTokens}/>
+                </div>
             </div>
         </div>
     }
