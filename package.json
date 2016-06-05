@@ -43,9 +43,5 @@
     "babel-register": "^6.9.0",
     "mocha": "^2.5.3",
     "power-assert": "^1.4.1"
-  },
-  "dependencies": {
-    "react": "^15.1.0",
-    "react-dom": "^15.1.0"
   }
 }
