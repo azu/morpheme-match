@@ -4,6 +4,7 @@ const React = require("react");
 import InputForm from "../../project/InputForm/InputForm";
 import AnalyzedTable from "../../project/AnalyzedTable/AnalyzedTable";
 import AnalyzedJSONField from "../../project/AnalyzedJSONField/AnalyzedJSONField";
+import TestInputForm from "../../project/TestInputForm/TestInputForm";
 import SideEffectLocationHash from "../../project/SideEffectLocationHash/SideEffectLocationHash";
 import AppLocator from "../../../AppLocator";
 import UpdateAnalyzedTableUseCase from "../../../js/use-case/analyzer/UpdateAnalyzedTableUseCase";
@@ -41,6 +42,7 @@ export default class App extends React.Component {
             </div>
             <AnalyzedTable tokens={analyzer.tokens}/>
             <AnalyzedJSONField outputJSON={outputJSON}/>
+            <TestInputForm text="マッチ"/>
         </div>
     }
 }

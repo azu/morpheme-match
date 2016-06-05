@@ -1,0 +1,15 @@
+.TestInputForm {
+    width: 100%;
+}
+
+.TestInputForm-input {
+    width: 100%;
+}
+
+.TestInputForm-label {
+    background: var(--AnnotationLabel--background-color);
+    border-radius: 3px 3px 0 0;
+    padding: 3px 5px;
+    margin: 0;
+    font-weight: bold;
+}

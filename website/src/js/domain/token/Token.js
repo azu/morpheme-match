@@ -30,6 +30,10 @@ export default class Token {
         this.pronunciation = object.pronunciation;
     }
 
+    toString() {
+        return this.surface_form;
+    }
+
     toJSON() {
         const basicResults = {
             // 表層形

@@ -21,7 +21,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/",
+    "test": "mocha test/ website/test/",
     "start": "webpack-dev-server --hot --content-base public/ --open",
     "build": "NODE_ENV=production webpack -p",
     "watch": "NODE_ENV=development webpack -d -w",
