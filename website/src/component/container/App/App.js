@@ -3,6 +3,7 @@
 const React = require("react");
 import InputForm from "../../project/InputForm/InputForm";
 import AnalyzedTable from "../../project/AnalyzedTable/AnalyzedTable";
+import AnalyzedJSONField from "../../project/AnalyzedJSONField/AnalyzedJSONField";
 import AppLocator from "../../../AppLocator";
 import UpdateAnalyzedTableUseCase from "../../../js/use-case/analyzer/UpdateAnalyzedTableUseCase";
 export default class App extends React.Component {
@@ -27,6 +28,7 @@ export default class App extends React.Component {
          * @type {AnalyzerState}
          */
         const analyzer = this.state.analyzer;
+        const outputJSON = analyzer.outputJSON;
         const onSubmit = (text) => {
             AppLocator.context.useCase(UpdateAnalyzedTableUseCase.create()).execute(text);
         };
@@ -35,6 +37,7 @@ export default class App extends React.Component {
                 <InputForm onSubmit={onSubmit}/>
             </div>
             <AnalyzedTable tokens={analyzer.tokens}/>
+            <AnalyzedJSONField outputJSON={outputJSON}/>
         </div>
     }
 }

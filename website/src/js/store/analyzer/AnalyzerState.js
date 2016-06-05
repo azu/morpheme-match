@@ -9,4 +9,8 @@ export default class AnalyzerState extends ReduceState {
         super();
         this.tokens = analyzer.analyzedTokens || [];
     }
+
+    get outputJSON() {
+        return JSON.stringify(this.tokens, null, 4);
+    }
 }
