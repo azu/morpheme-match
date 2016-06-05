@@ -3,7 +3,7 @@
 import {UseCase} from "almin";
 import analyzedRepository from "../infra/repository/AnalyzerRepository";
 import AnalyzerFactory from "../domain/analyzer/AnalyzerFactory";
-import UpdateAnalyzedTableUseCase from "./analyzer/UpdateAnalyzedTableUseCase";
+import UpdateAnalyzedTextUseCase from "./analyzer/UpdateAnalyzedTextUseCase";
 export default class InitializeUseCase extends UseCase {
     static create() {
         return new this({
@@ -23,7 +23,7 @@ export default class InitializeUseCase extends UseCase {
         const defaultText = hash || "日本語の文章を解析します。";
         return AnalyzerFactory.create().then((analyzer) => {
             this.analyzedRepository.save(analyzer);
-            const initializeAnalyzedText = new UpdateAnalyzedTableUseCase({analyzedRepository: this.analyzedRepository});
+            const initializeAnalyzedText = new UpdateAnalyzedTextUseCase({analyzedRepository: this.analyzedRepository});
             return this.context.useCase(initializeAnalyzedText).execute(defaultText);
         });
     }

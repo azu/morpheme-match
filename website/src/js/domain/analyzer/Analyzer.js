@@ -6,6 +6,8 @@ export default class Analyzer {
         this.currentText = "";
         this.analyzedTokens = [];
         this.tokenizer = tokenizer;
+        this.testText = "";
+        this.testTokens = [];
     }
 
     /**
@@ -29,5 +31,13 @@ export default class Analyzer {
             return new Token(rawToken);
         });
         return this.analyzedTokens;
+    }
+
+    analyzeTestText(text) {
+        this.testText = text;
+        this.testTokens = this.tokenizer.tokenize(text).map(rawToken => {
+            return new Token(rawToken);
+        });
+        return this.testTokens;
     }
 }

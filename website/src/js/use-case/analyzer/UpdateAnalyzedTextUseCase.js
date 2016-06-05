@@ -2,7 +2,7 @@
 "use strict";
 import {UseCase} from "almin";
 import analyzedRepository from "../../infra/repository/AnalyzerRepository";
-export default class UpdateAnalyzedTableUseCase extends UseCase {
+export default class UpdateAnalyzedTextUseCase extends UseCase {
     static create() {
         return new this({
             analyzedRepository

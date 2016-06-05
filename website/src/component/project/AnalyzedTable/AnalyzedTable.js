@@ -25,7 +25,7 @@ export default class AnalyzedTable extends React.Component {
             return <AnalyzedTaken key={index} token={token}/>
         });
         return <div className="AnalyzedTable">
-            <label className="AnalyzedTable-label">解析結果</label>
+            <label className="AnalyzedTable-label">{this.props.label}</label>
             <table width="100%" className="table">
                 <thead>
                 <tr>

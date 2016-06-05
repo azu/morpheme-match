@@ -1,13 +1,17 @@
 // LICENSE : MIT
 "use strict";
 const React = require("react");
+import AppLocator from "../../../AppLocator";
+import UpdateAnalyzedTextUseCase from "../../../js/use-case/analyzer/UpdateAnalyzedTextUseCase";
+import UpdateTestTextUseCase from "../../../js/use-case/analyzer/UpdateTestTextUseCase";
+// component
 import InputForm from "../../project/InputForm/InputForm";
 import AnalyzedTable from "../../project/AnalyzedTable/AnalyzedTable";
 import AnalyzedJSONField from "../../project/AnalyzedJSONField/AnalyzedJSONField";
 import TestInputForm from "../../project/TestInputForm/TestInputForm";
 import SideEffectLocationHash from "../../project/SideEffectLocationHash/SideEffectLocationHash";
-import AppLocator from "../../../AppLocator";
-import UpdateAnalyzedTableUseCase from "../../../js/use-case/analyzer/UpdateAnalyzedTableUseCase";
+import TestMatchedTable from "../../project/TestMatchedTable/TestMatchedTable";
+
 export default class App extends React.Component {
     constructor(...args) {
         super(...args);
@@ -30,20 +34,27 @@ export default class App extends React.Component {
          * @type {AnalyzerState}
          */
         const analyzer = this.state.analyzer;
-        const currentText = analyzer.currentText;
-        const outputJSON = analyzer.outputJSON;
-        const permanentURL = analyzer.permanentURL;
-        const onSubmit = (text) => {
-            AppLocator.context.useCase(UpdateAnalyzedTableUseCase.create()).execute(text);
+        const matchResult = analyzer.testMatch;
+        const updateAnalyzedText = (text) => {
+            AppLocator.context.useCase(UpdateAnalyzedTextUseCase.create()).execute(text);
+        };
+        const updateTestText = (text) => {
+            AppLocator.context.useCase(UpdateTestTextUseCase.create()).execute(text);
         };
         return <div className="App">
-            <SideEffectLocationHash text={currentText}/>
+            <SideEffectLocationHash text={analyzer.currentText}/>
             <div className="App-InputForm">
-                <InputForm defaultValue={currentText} onSubmit={onSubmit}/>
+                <InputForm defaultValue={analyzer.currentText} onSubmit={updateAnalyzedText}/>
             </div>
-            <AnalyzedTable tokens={analyzer.tokens}/>
-            <AnalyzedJSONField permanentURL={permanentURL} outputJSON={outputJSON}/>
-            <TestInputForm text="マッチ"/>
+            <div className="App-Analyzed">
+                <AnalyzedTable label="解析結果" tokens={analyzer.tokens}/>
+                <AnalyzedJSONField permanentURL={analyzer.permanentURL} outputJSON={analyzer.outputJSON}/>
+            </div>
+            <div className="App-Test">
+                <TestInputForm text={analyzer.testText} onSubmit={updateTestText}/>
+                <TestMatchedTable match={matchResult.match} value={matchResult.value}/>
+                <AnalyzedTable label="テストの解析結果" tokens={analyzer.testTokens}/>
+            </div>
         </div>
     }
 }

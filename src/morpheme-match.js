@@ -17,7 +17,7 @@ function matchToken(token, expectShape) {
  * @param {Object[]} matchedTokens
  * @returns {function(token:Object)}
  */
-export default function createTokenMatcher(matchedTokens) {
+module.exports = function createTokenMatcher(matchedTokens) {
     let currentTokenPosition = 0;
     const tokenCount = matchedTokens.length;
     const matchTokens = [];

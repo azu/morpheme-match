@@ -1,6 +1,7 @@
 // LICENSE : MIT
 "use strict";
 import ReduceState from "../base/ReduceState";
+const createTokenMatcher = require("morpheme-match");
 export default class AnalyzerState extends ReduceState {
     /**
      * @param {Analyzer} analyzer
@@ -9,6 +10,29 @@ export default class AnalyzerState extends ReduceState {
         super();
         this.currentText = analyzer.currentText;
         this.tokens = analyzer.analyzedTokens || [];
+        this.testText = analyzer.testText;
+        this.testTokens = analyzer.testTokens;
+    }
+
+    get testMatch() {
+        let matchedToken = [];
+        const matchedTokens = this.tokens.map(token => token.toJSON());
+        const expectToken = createTokenMatcher(matchedTokens);
+        const isMatch = this.testTokens.some(token => {
+            const {match, tokens} = expectToken(token);
+            matchedToken = tokens;
+            return match;
+        });
+        if (isMatch) {
+            const value = matchedToken.map(token => token.surface_form).join("");
+            return {
+                match: isMatch,
+                value
+            }
+        }
+        return {
+            match: isMatch
+        }
     }
 
     // return "<value>"
