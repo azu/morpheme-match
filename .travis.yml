@@ -12,8 +12,8 @@ after_success:
                              --iv "$encrypted_cee6f610cc35_iv" \
                              --path-encrypted-key ".travis/github_deploy_key.enc"
 
-        $(npm bin)/update-branch --commands "npm run build:website"
-                                 --commit-message "Update website [skip ci]"
-                                 --directory "website/public"
-                                 --distribution-branch "gh-pages"
+        $(npm bin)/update-branch --commands "npm run build:website" \
+                                 --commit-message "Update website [skip ci]" \
+                                 --directory "website/public" \
+                                 --distribution-branch "gh-pages" \
                                  --source-branch "master"
