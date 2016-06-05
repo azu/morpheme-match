@@ -18,7 +18,8 @@ export default class InputForm extends React.Component {
             <div className="control has-addons">
                 <input ref={(c) => this.input = c}
                        className="InputForm-input input is-expanded"
-                       type="text" name="name" size="20"/>
+                       type="text" name="name" size="20"
+                       defaultValue={this.props.defaultValue ? this.props.defaultValue: null}/>
                 <p className="control">
                     <input className="button is-info" type="submit" value="解析"/>
                 </p>

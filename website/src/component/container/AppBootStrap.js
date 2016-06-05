@@ -8,7 +8,8 @@ import InitializeUseCase from "../../js/use-case/InitializeUseCase";
 const AppLoading = LoadingContainer(App);
 export default class AppBootStrap extends React.Component {
     render() {
-        const promise = AppLocator.context.useCase(InitializeUseCase.create()).execute();
+        const hash = location.hash.slice(1);
+        const promise = AppLocator.context.useCase(InitializeUseCase.create()).execute({hash});
         return <AppLoading promise={promise} />;
     }
 }

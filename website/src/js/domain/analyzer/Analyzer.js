@@ -1,5 +1,6 @@
 // LICENSE : MIT
 "use strict";
+import Token from "../token/Token";
 export default class Analyzer {
     constructor({tokenizer}) {
         this.currentText = "";
@@ -9,6 +10,8 @@ export default class Analyzer {
 
     analyze(text) {
         this.currentText = text;
-        this.analyzedTokens = this.tokenizer.tokenize(text);
+        this.analyzedTokens = this.tokenizer.tokenize(text).map(rawToken => {
+            return new Token(rawToken);
+        });
     }
 }

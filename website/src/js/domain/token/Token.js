@@ -29,4 +29,38 @@ export default class Token {
         // 発音
         this.pronunciation = object.pronunciation;
     }
+
+    toJSON() {
+        const basicResults = {
+            // 表層形
+            surface_form: this.surface_form,
+            // 品詞
+            pos: this.pos,
+            // 品詞細分類1
+            pos_detail_1: this.pos_detail_1,
+            // 品詞細分類2
+            pos_detail_2: this.pos_detail_2,
+            // 品詞細分類3
+            pos_detail_3: this.pos_detail_3,
+            // 活用型
+            conjugated_type: this.conjugated_type,
+            // 活用形
+            conjugated_form: this.conjugated_form,
+            // 基本形
+            basic_form: this.basic_form,
+            // 読み
+            reading: this.reading,
+            // 発音
+            pronunciation: this.pronunciation
+        };
+        const filteredResult = {};
+        Object.keys(basicResults).forEach(key => {
+            const value = basicResults[key];
+            if (!value || value.length === 0) {
+                return;
+            }
+            filteredResult[key] = value;
+        });
+        return filteredResult;
+    }
 }

@@ -7,6 +7,7 @@ export default class AnalyzerState extends ReduceState {
      */
     constructor({analyzer = {}} = {}) {
         super();
+        this.currentText = analyzer.currentText;
         this.tokens = analyzer.analyzedTokens || [];
     }
 
