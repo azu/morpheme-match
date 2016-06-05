@@ -25,6 +25,11 @@ export default class InitializeUseCase extends UseCase {
             this.analyzedRepository.save(analyzer);
             const initializeAnalyzedText = new UpdateAnalyzedTextUseCase({analyzedRepository: this.analyzedRepository});
             return this.context.useCase(initializeAnalyzedText).execute(defaultText);
+        }).then(() => {
+            this.dispatch({type: InitializeUseCase.Events.initialize})
         });
     }
 }
+InitializeUseCase.Events = {
+    initialize: "initialize-application"
+};

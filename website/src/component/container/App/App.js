@@ -42,8 +42,9 @@ export default class App extends React.Component {
         const updateTestText = (text) => {
             AppLocator.context.useCase(UpdateTestTextUseCase.create()).execute(text);
         };
+        const hashChangeComponent = analyzer.initialized ? <SideEffectLocationHash text={analyzer.currentText}/> : null;
         return <div className="App">
-            <SideEffectLocationHash text={analyzer.currentText}/>
+            {hashChangeComponent}
             <GithubCorner href="https://github.com/azu/morpheme-match"/>
             <Title className="App-title"><a href="https://github.com/azu/morpheme-match">morpheme-match</a></Title>
             <h2 class="subtitle">形態素解析したトークンを元に、文章にマッチするトークンが含まれているかをチェックするライブラリのデモ</h2>
