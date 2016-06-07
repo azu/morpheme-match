@@ -27,11 +27,11 @@ module.exports = function createTokenMatcher(matchedTokens) {
             matchTokens.push(token);
             currentTokenPosition += 1;
         } else {
-            // restart
+            // reset position
             matchTokens.length = 0;
             currentTokenPosition = 0;
         }
-        // match
+        // match all tokens
         if (currentTokenPosition === tokenCount) {
             const tokens = matchTokens.slice();
             // match -> reset
@@ -46,4 +46,4 @@ module.exports = function createTokenMatcher(matchedTokens) {
             match: false
         };
     }
-}
+};
