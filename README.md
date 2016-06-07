@@ -4,6 +4,12 @@ morpheme-match provide match function that match token with sentence.
 
 形態素解析したトークンを元に、文章にマッチするトークンが含まれているかをチェックするライブラリ。
 
+## Online Demo
+
+[![Online demo site](https://monosnap.com/file/URqDU4n0lsd23ZdDtWumhMNCCgvpSy.png)](https://azu.github.io/morpheme-match/)
+
+Please go to https://azu.github.io/morpheme-match/ 
+
 ## Install
 
 Install with [npm](https://www.npmjs.com/):
