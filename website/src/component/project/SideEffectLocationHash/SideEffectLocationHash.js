@@ -1,14 +1,28 @@
 // LICENSE : MIT
 "use strict";
 const React = require("react");
+import AppLocator from "../../../AppLocator";
 export default class SideEffectLocationHash extends React.Component {
+
+    constructor() {
+        super();
+    }
 
     shouldComponentUpdate(nextProps, nextState) {
         return nextProps.text !== undefined && nextProps.text.length > 0;
     }
 
     render() {
-        this._updateHash(this.props.text);
+        if (this.props.text) {
+            AppLocator.history.push({
+                search: `?text=${this.props.text}`,
+            });
+        } else {
+            // empt
+            AppLocator.history.push({
+                search: null
+            });
+        }
         return null;
     }
 
@@ -20,6 +34,6 @@ export default class SideEffectLocationHash extends React.Component {
     }
 }
 SideEffectLocationHash.propTypes = {
-    updateText: React.PropTypes.func,
-    text: React.PropTypes.string
+    text: React.PropTypes.string,
+    isFirstTime: React.PropTypes.bool
 };

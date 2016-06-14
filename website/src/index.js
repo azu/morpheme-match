@@ -9,6 +9,8 @@ import AppStoreGroup from "./js/store/AppStore";
 // context
 import {Context, Dispatcher}  from "almin";
 import AlminLogger from "almin-logger";
+import {createHistory} from 'history';
+const history = createHistory();
 // instances
 const dispatcher = new Dispatcher();
 const appStoreGroup = AppStoreGroup.create();
@@ -20,7 +22,12 @@ const appContext = new Context({
 // start logger
 const logger = new AlminLogger();
 logger.startLogging(appContext);
+appContext.onErrorDispatch(error => {
+    console.error(error);
+});
 // global
 AppLocator.context = appContext;
+AppLocator.history = history;
+
 // entry point
 ReactDOM.render(<AppBootStrap />, document.getElementById("js-app"));

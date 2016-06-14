@@ -6,6 +6,10 @@ export class AppLocator {
          * @type {Context}
          */
         this.context = null;
+        /**
+         * @type {History}
+         */
+        this.history = null;
     }
 }
 

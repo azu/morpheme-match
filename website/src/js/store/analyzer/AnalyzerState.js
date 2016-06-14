@@ -2,11 +2,11 @@
 "use strict";
 import ReduceState from "../base/ReduceState";
 const createTokenMatcher = require("morpheme-match");
-import UpdateAnalyzedTextUseCase from "../../use-case/analyzer/UpdateAnalyzedTextUseCase";
 import InitializeUseCase from "../../use-case/InitializeUseCase";
 export default class AnalyzerState extends ReduceState {
     /**
-     * @param {Analyzer} analyzer
+     * @param {Analyzer} [analyzer]
+     * @param {boolean} initialized
      */
     constructor({analyzer = {}, initialized} = {}) {
         super();
@@ -16,10 +16,6 @@ export default class AnalyzerState extends ReduceState {
         this.tokens = analyzer.analyzedTokens || [];
         this.testText = analyzer.testText;
         this.testTokens = analyzer.testTokens || [];
-    }
-
-    get isChangedByUser() {
-        return this.initialized;
     }
 
     get testMatch() {
@@ -45,7 +41,8 @@ export default class AnalyzerState extends ReduceState {
 
     // return "<value>"
     get permanentURL() {
-        const origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : "");
+        const origin = window.location.protocol + "//" + window.location.hostname + (window.location.port
+                ? ":" + window.location.port : "");
         const hash = this.currentText ? `#${this.currentText}` : "";
         return `${origin}${window.location.pathname}${hash}`;
     }
@@ -56,14 +53,9 @@ export default class AnalyzerState extends ReduceState {
 
     reduce(payload) {
         switch (payload.type) {
-            case UpdateAnalyzedTextUseCase.Events.initialize:
+            case InitializeUseCase.Events.didInitialized:
                 return new AnalyzerState(Object.assign({}, this, {
                     initialized: true
-                }));
-            // by initial event
-            case InitializeUseCase.Events.initialize:
-                return new AnalyzerState(Object.assign({}, this, {
-                    initialized: false
                 }));
             default:
                 return this;

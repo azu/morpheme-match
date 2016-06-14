@@ -58,9 +58,11 @@
     "almin-logger": "^1.1.3",
     "bulma": "0.0.28",
     "classname": "0.0.0",
+    "history": "^3.0.0",
     "kuromojin": "^1.3.0",
     "map-like": "^1.0.1",
     "morpheme-match": "file:..",
+    "query-string": "^4.2.2",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-github-corner": "^0.3.0"

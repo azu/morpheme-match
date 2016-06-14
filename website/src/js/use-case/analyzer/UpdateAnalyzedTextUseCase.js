@@ -23,12 +23,6 @@ export default class UpdateAnalyzedTextUseCase extends UseCase {
     execute(text) {
         const analyzer = this.analyzedRepository.lastUsed();
         analyzer.analyze(text);
-        this.dispatch({
-            type: UpdateAnalyzedTextUseCase.Events.initialize
-        });
         this.analyzedRepository.save(analyzer);
     }
 }
-UpdateAnalyzedTextUseCase.Events = {
-    initialize: "update-by-user"
-};
