@@ -9,6 +9,13 @@ export default class RoutingState extends ReduceState {
         this.text = queryObject.text;
     }
 
+    get currentURL() {
+        const origin = window.location.protocol + "//" + window.location.hostname + (window.location.port
+                ? ":" + window.location.port : "");
+        const query = this.text ? `?text=${this.text}` : "";
+        return `${origin}${window.location.pathname}${query}`;
+    }
+
     reduce(payload) {
         switch (payload.type) {
             case ChangeURLStateUseCase.Events.change:

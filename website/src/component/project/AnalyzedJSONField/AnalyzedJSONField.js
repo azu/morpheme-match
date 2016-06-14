@@ -7,7 +7,7 @@ export default class AnalyzedJSONField extends React.Component {
         const permanentURL = this.props.permanentURL;
         const value = `// ${permanentURL}
 ${outputJSON}
-`
+`;
         return <div className="AnalyzedJSONField">
             <label className="AnalyzedJSONField-label">解析結果(JSON)</label>
             <p className="control">

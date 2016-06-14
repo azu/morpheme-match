@@ -56,14 +56,14 @@ export default class App extends React.Component {
             <SideEffectLocationHash text={routing.text}/>
             <GithubCorner href="https://github.com/azu/morpheme-match"/>
             <Title className="App-title"><a href="https://github.com/azu/morpheme-match">morpheme-match</a></Title>
-            <h2 class="subtitle">形態素解析したトークンを元に、文章にマッチするトークンが含まれているかをチェックするライブラリのデモ</h2>
+            <h2 className="subtitle">形態素解析したトークンを元に、文章にマッチするトークンが含まれているかをチェックするライブラリのデモ</h2>
             <div className="App-container">
                 <div className="App-InputForm">
                     <InputForm defaultValue={analyzer.currentText} onSubmit={updateAnalyzedText}/>
                 </div>
                 <div className="App-Analyzed">
                     <AnalyzedTable label="解析結果" tokens={analyzer.tokens}/>
-                    <AnalyzedJSONField permanentURL={analyzer.permanentURL}
+                    <AnalyzedJSONField permanentURL={routing.currentURL}
                                        outputJSON={analyzer.outputJSON}/>
                 </div>
                 <div className="App-Test">
