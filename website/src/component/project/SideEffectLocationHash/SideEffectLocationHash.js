@@ -13,13 +13,16 @@ export default class SideEffectLocationHash extends React.Component {
     }
 
     render() {
+        const location = AppLocator.history.getCurrentLocation();
         if (this.props.text) {
             AppLocator.history.push({
+                pathname: location.pathname,
                 search: `?text=${this.props.text}`,
             });
         } else {
             // empt
             AppLocator.history.push({
+                pathname: location.pathname,
                 search: null
             });
         }
