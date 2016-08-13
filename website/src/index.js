@@ -1,5 +1,7 @@
 // LICENSE : MIT
 "use strict";
+require('usertiming');
+import "./service-worker-registration"
 import React from "react";
 import ReactDOM from "react-dom";
 import AppBootStrap from "./component/container/AppBootStrap";

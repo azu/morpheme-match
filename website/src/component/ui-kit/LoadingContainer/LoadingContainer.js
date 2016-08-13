@@ -25,14 +25,13 @@ export default Wrapped => class LoadingContainer extends React.Component {
     render() {
         if (this.state.loading) {
             return <span>Loading...</span>;
-        }
-        else if (this.state.error !== null) {
+        } else if (this.state.error !== null) {
+            console.error(this.state.error);
             return <span>Error: {this.state.error.message}</span>;
-        }
-        else {
+        } else {
             const propsWithoutThePromise = without(this.props, 'promise');
             return <Wrapped {...propsWithoutThePromise}
-                {...this.state.value}/>;
+                            {...this.state.value}/>;
         }
     }
 };

@@ -1,0 +1,6 @@
+{
+  "staticFileGlobs": [
+    "./public/dict/*.gz"
+  ],
+  "stripPrefix": "./public/"
+}
