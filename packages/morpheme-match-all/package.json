@@ -47,6 +47,6 @@
     "power-assert": "^1.4.2"
   },
   "dependencies": {
-    "morpheme-match": "^1.0.1"
+    "morpheme-match": "^1.1.0"
   }
 }
