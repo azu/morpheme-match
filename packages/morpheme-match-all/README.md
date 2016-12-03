@@ -106,7 +106,7 @@ tokens: [Object] } } ]
 **Properties**
 
 - `tokens` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** kuromoji's token list
-- `message` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+- `message` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** 
 
 ### `MatchResult`
 
@@ -118,7 +118,7 @@ tokens: [Object] } } ]
 
 - `tokens` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** match tokens,
 - `index` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** index of first match token
-- `expected` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;ExpectedDictionary>** dictionary defined by you
+- `dict` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;ExpectedDictionary>** dictionary defined by you
 
 ### `createMatcher(dictionaries: Array<ExpectedDictionary>): morphemeMatchAll`
 

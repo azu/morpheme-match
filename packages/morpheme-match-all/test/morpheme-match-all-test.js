@@ -18,7 +18,7 @@ describe("morpheme-match-all", () => {
                 const [result] = results;
                 // 解析|**する**|
                 assert(result.index === 1);
-                assert.deepEqual(result.expected, dictionaries[0]);
+                assert.deepEqual(result.dict, dictionaries[0]);
                 assert(Array.isArray(result.tokens));
             });
         });
@@ -39,7 +39,7 @@ describe("morpheme-match-all", () => {
                     /**
 [ { tokens: [ [Object], [Object], [Object], [Object] ],
     index: 1,
-    expected:
+    dict:
      { message: '"することができる"は有害 http://qiita.com/takahi-i/items/a93dc2ff42af6b93f6e0',
        tokens: [Object] } } ]
                      */

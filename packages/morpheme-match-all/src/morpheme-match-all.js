@@ -5,15 +5,15 @@ import Expector from "./Expector";
 /**
  * @typedef {Object} ExpectedDictionary
  * @property {Object[]} tokens kuromoji's token list
- * @property {string} message
- * @property {string] expected
+ * @property {string} [message]
+ * @property {string] [expected]
  * @public
  */
 /**
  * @typedef {Object} MatchResult
  * @property {Object[]} tokens match tokens,
  * @property {number} index index of first match token
- * @property {ExpectedDictionary[]} expected dictionary defined by you
+ * @property {ExpectedDictionary[]} dict dictionary defined by you
  * @public
  */
 /**
@@ -51,7 +51,7 @@ function createMatcher(dictionaries) {
                 matchResults.push({
                     tokens,
                     index,
-                    expected: expector.dict
+                    dict: expector.dict
                 });
             });
         });
