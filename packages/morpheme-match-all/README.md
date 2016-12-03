@@ -3,7 +3,7 @@
 A wrapper of [morpheme-match](https://github.com/azu/morpheme-match "morpheme-match") API. Match all kuromoji's tokens.
 
 [kuromojin](https://github.com/azu/kuromojin "kuromojin")のtoken同士を比較して、
-形態素解析結果を元にした辞書によるマッチを行うライブラリです。
+形態素解析結果を元にしたtoken辞書による比較を行うライブラリです。
 
 ## Install
 
