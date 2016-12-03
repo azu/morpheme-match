@@ -1,6 +1,9 @@
 # morpheme-match-all
 
-A wrapper of morpheme-match API. Match all kuromoji's tokens.
+A wrapper of [morpheme-match](https://github.com/azu/morpheme-match "morpheme-match") API. Match all kuromoji's tokens.
+
+[kuromojin](https://github.com/azu/kuromojin "kuromojin")のtoken同士を比較して、
+形態素解析結果を元にした辞書によるマッチを行うライブラリです。
 
 ## Install
 
@@ -165,4 +168,3 @@ For bugs and feature requests, [please create an issue](https://github.com/azu/m
 ## License
 
 MIT © azu
-```
