@@ -126,6 +126,29 @@ console.log(resultTokens);
 */
 ```
 
+### Tips
+
+morpheme-matchは`_`から始まるキーを無視するため、メタ情報は`_`で書き込む事ができます。
+
+```js
+const expectToken = createTokenMatcher([
+    {
+        "surface_form": "かも",
+        "pos": "助詞",
+        "pos_detail_1": "副助詞",
+        "pos_detail_2": "*",
+        "pos_detail_3": "*",
+        "conjugated_type": "*",
+        "conjugated_form": "*",
+        "basic_form": "かも",
+        "reading": "カモ",
+        "pronunciation": "カモ",
+        "_cature": "$1"
+    }
+]);
+``
+
+
 ## Changelog
 
 See [Releases page](https://github.com/azu/morpheme-match/releases).

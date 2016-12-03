@@ -2,6 +2,10 @@
 "use strict";
 function matchToken(token, expectShape) {
     return Object.keys(expectShape).every(key => {
+        // Ignore start with _ key
+        if (key[0] === "_") {
+            return true;
+        }
         const actualValue = token[key];
         // support multiple value
         // "pos": ["名詞", "副詞"]
