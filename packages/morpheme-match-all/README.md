@@ -138,6 +138,11 @@ match `actualTokens` with `dictionaries`
 
 Returns: **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;MatchResult>**
 
+## 参考
+
+- [textlint-ja/textlint-rule-no-insert-dropping-sa: サ抜き、サ入れ表現の誤用をチェックするtextlintルール](https://github.com/textlint-ja/textlint-rule-no-insert-dropping-sa "textlint-ja/textlint-rule-no-insert-dropping-sa: サ抜き、サ入れ表現の誤用をチェックするtextlintルール")
+- [textlint-ja/textlint-rule-ja-no-redundant-expression: 冗長な表現を禁止するtextlintルール](https://github.com/textlint-ja/textlint-rule-ja-no-redundant-expression "textlint-ja/textlint-rule-ja-no-redundant-expression: 冗長な表現を禁止するtextlintルール")
+
 ## Changelog
 
 See [Releases page](https://github.com/azu/morpheme-match-all/releases).
