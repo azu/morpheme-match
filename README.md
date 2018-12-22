@@ -148,6 +148,11 @@ const expectToken = createTokenMatcher([
 ]);
 ```
 
+## 関連
+
+- [azu/morpheme-match-all: A wrapper of morpheme-match API. Match all kuromoji's tokens.](https://github.com/azu/morpheme-match-all)
+    - A wrapper for morpheme-match
+- [textlint-ja/textlint-rule-morpheme-match: 形態素解析結果のTokenベースの辞書でマッチするtextlintルール](https://github.com/textlint-ja/textlint-rule-morpheme-match)
 
 ## Changelog
 
