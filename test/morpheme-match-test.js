@@ -3,7 +3,7 @@
 import expectTokenStream from "../src/morpheme-match";
 const assert = require("power-assert");
 describe("expectTokenStream", function() {
-    it("should return {match, tokens}", function() {
+    it("should return {match, tokens, skipped}", function() {
         // http://localhost:8080/#名詞(かも)しれない
         const expectToken = expectTokenStream([
             {
@@ -28,6 +28,7 @@ describe("expectTokenStream", function() {
             },
             {
                 "surface_form": "しれ",
+                "_skippable": true,
             },
             {
                 "surface_form": "、",
@@ -90,15 +91,18 @@ describe("expectTokenStream", function() {
             }
         ];
         let resultTokens = [];
+        let resultSkipped = [];
         const result = tokens.some(token => {
-            const {match, tokens} = expectToken(token);
+            const {match, tokens, skipped} = expectToken(token);
             if (!match) {
                 assert(tokens === undefined);
             }
             resultTokens = tokens;
+            resultSkipped = skipped;
             return match;
         });
         assert(result);
         assert.equal(resultTokens.length, 2);
+        assert.deepEqual(resultSkipped, [false, true, true, false, true, true]);
     });
 });
