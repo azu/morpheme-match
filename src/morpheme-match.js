@@ -26,14 +26,20 @@ module.exports = function createTokenMatcher(matchedTokens) {
     const tokenCount = matchedTokens.length;
     const matchTokens = [];
     return (token) => {
-        const expectedToken = matchedTokens[currentTokenPosition];
-        if (matchToken(token, expectedToken)) {
-            matchTokens.push(token);
-            currentTokenPosition += 1;
-        } else {
-            // reset position
-            matchTokens.length = 0;
-            currentTokenPosition = 0;
+        while (currentTokenPosition < tokenCount) {
+            const expectedToken = matchedTokens[currentTokenPosition];
+            if (matchToken(token, expectedToken)) {
+                matchTokens.push(token);
+                currentTokenPosition += 1;
+                break;
+            } else if (expectedToken["_skippable"]) {
+                currentTokenPosition += 1;
+            } else {
+                // reset position
+                matchTokens.length = 0;
+                currentTokenPosition = 0;
+                break;
+            }
         }
         // match all tokens
         if (currentTokenPosition === tokenCount) {

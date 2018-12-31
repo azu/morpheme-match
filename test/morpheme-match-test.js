@@ -2,8 +2,8 @@
 "use strict";
 import expectTokenStream from "../src/morpheme-match";
 const assert = require("power-assert");
-describe("expectTokenStream", function () {
-    it("should return {match, tokens}", function () {
+describe("expectTokenStream", function() {
+    it("should return {match, tokens}", function() {
         // http://localhost:8080/#名詞(かも)しれない
         const expectToken = expectTokenStream([
             {
@@ -17,7 +17,26 @@ describe("expectTokenStream", function () {
                 "basic_form": "かも",
                 "reading": "カモ",
                 "pronunciation": "カモ"
-            }
+            },
+            {
+                "surface_form": "、",
+                "_skippable": true,
+            },
+            {
+                "surface_form": "、",
+                "_skippable": true,
+            },
+            {
+                "surface_form": "しれ",
+            },
+            {
+                "surface_form": "、",
+                "_skippable": true,
+            },
+            {
+                "surface_form": "、",
+                "_skippable": true,
+            },
         ]);
         const tokens = [
             {
@@ -73,13 +92,13 @@ describe("expectTokenStream", function () {
         let resultTokens = [];
         const result = tokens.some(token => {
             const {match, tokens} = expectToken(token);
-            if(!match) {
+            if (!match) {
                 assert(tokens === undefined);
             }
             resultTokens = tokens;
             return match;
         });
         assert(result);
-        assert.equal(resultTokens.length, 1);
+        assert.equal(resultTokens.length, 2);
     });
 });
