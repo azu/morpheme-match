@@ -148,6 +148,26 @@ const expectToken = createTokenMatcher([
 ]);
 ```
 
+キー`_skippable`が`true`の場合はマッチしない場合は無視されます。
+
+
+```js
+const expectToken = createTokenMatcher([
+    {
+        "surface_form": "かも",
+    },
+    {
+        "surface_form": "、",
+        "_skippable": true,
+    },
+    {
+        "surface_form": "しれ",
+    },
+]);
+```
+
+
+
 ## 関連
 
 - [azu/morpheme-match-all: A wrapper of morpheme-match API. Match all kuromoji's tokens.](https://github.com/azu/morpheme-match-all)
