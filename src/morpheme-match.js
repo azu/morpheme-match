@@ -25,18 +25,22 @@ module.exports = function createTokenMatcher(matchedTokens) {
     let currentTokenPosition = 0;
     const tokenCount = matchedTokens.length;
     const matchTokens = [];
-    return (token) => {
+    const matchSkipped = [];
+    return (token, index) => {
         while (currentTokenPosition < tokenCount) {
             const expectedToken = matchedTokens[currentTokenPosition];
             if (matchToken(token, expectedToken)) {
                 matchTokens.push(token);
+                matchSkipped.push(false);
                 currentTokenPosition += 1;
                 break;
             } else if (expectedToken["_skippable"]) {
                 currentTokenPosition += 1;
+                matchSkipped.push(true);
             } else {
                 // reset position
                 matchTokens.length = 0;
+                matchSkipped.length = 0;
                 currentTokenPosition = 0;
                 break;
             }
@@ -44,12 +48,15 @@ module.exports = function createTokenMatcher(matchedTokens) {
         // match all tokens
         if (currentTokenPosition === tokenCount) {
             const tokens = matchTokens.slice();
+            const skipped = matchSkipped.slice();
             // match -> reset
             currentTokenPosition = 0;
             matchTokens.length = 0;
+            matchSkipped.length = 0;
             return {
                 match: true,
-                tokens: tokens
+                tokens: tokens,
+                skipped: skipped,
             };
         }
         return {

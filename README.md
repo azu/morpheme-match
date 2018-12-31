@@ -20,7 +20,7 @@ Install with [npm](https://www.npmjs.com/):
 
 ### createTokenMatcher(expectedTokens): function
 
-`createTokenMatcher()` return `function(token): { match: boolean, tokens?: Array }`.
+`createTokenMatcher()` return `function(token): { match: boolean, tokens?: Array, skipped? Array }`.
 
 We want to check "名詞かもしれない" contain "かも" token. 
 Write following:
@@ -107,7 +107,7 @@ If want to get matched token, write following:
 ```js
 let resultTokens = [];
 const result = tokens.some(token => {
-    const {match, tokens} = expectToken(token);
+    const {match, tokens, skipped} = expectToken(token);
     resultTokens = tokens;
     return match;
 });
