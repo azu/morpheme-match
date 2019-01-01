@@ -6,13 +6,14 @@ import Expector from "./Expector";
  * @typedef {Object} ExpectedDictionary
  * @property {Object[]} tokens kuromoji's token list
  * @property {string} [message]
- * @property {string] [expected]
+ * @property {string} [expected]
  * @public
  */
 /**
  * @typedef {Object} MatchResult
  * @property {Object[]} tokens match tokens,
  * @property {number} index index of first match token
+ * @property {boolean[]} skipped skipped values for tokens
  * @property {ExpectedDictionary[]} dict dictionary defined by you
  * @public
  */
