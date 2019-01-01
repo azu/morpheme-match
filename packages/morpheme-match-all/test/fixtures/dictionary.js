@@ -42,6 +42,10 @@ module.exports = [
                 "pronunciation": "ガ"
             },
             {
+                "surface_form": "、",
+                "_skippable": true,
+            },
+            {
                 "pos": "動詞",
                 "pos_detail_1": "自立",
                 "conjugated_type": "一段",

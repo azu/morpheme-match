@@ -39,7 +39,7 @@ function createMatcher(dictionaries) {
         const matchResults = [];
         actualTokens.forEach(actualToken => {
             expectors.forEach(expector => {
-                const {match, tokens} = expector.match(actualToken);
+                const {match, tokens, skipped} = expector.match(actualToken);
                 if (!match) {
                     return;
                 }
@@ -51,6 +51,7 @@ function createMatcher(dictionaries) {
                 matchResults.push({
                     tokens,
                     index,
+                    skipped,
                     dict: expector.dict
                 });
             });

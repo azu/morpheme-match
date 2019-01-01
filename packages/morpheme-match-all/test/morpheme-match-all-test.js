@@ -44,9 +44,9 @@ describe("morpheme-match-all", () => {
        tokens: [Object] } } ]
                      */
                     assert(results.length === 1);
+                    assert.deepEqual(results[0].skipped, [false, false, false, true, false]);
                 });
             });
         });
     });
 });
-
