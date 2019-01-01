@@ -118,6 +118,7 @@ tokens: [Object] } } ]
 
 - `tokens` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** match tokens,
 - `index` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** index of first match token
+- `skipped` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** whether the token defined in the dictionary is skipped or not
 - `dict` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;ExpectedDictionary>** dictionary defined by you
 
 ### `createMatcher(dictionaries: Array<ExpectedDictionary>): morphemeMatchAll`
