@@ -1,11 +1,10 @@
-// LICENSE : MIT
-"use strict";
-import expectTokenStream from "../src/morpheme-match";
-const assert = require("power-assert");
-describe("expectTokenStream", function() {
-    it("should return {match, tokens, skipped}", function() {
+import * as assert from "assert";
+import {createTokenMatcher, Token} from "../src/morpheme-match";
+
+describe("createTokenMatcher", function () {
+    it("should return {match, tokens, skipped}", function () {
         // http://localhost:8080/#名詞(かも)しれない
-        const expectToken = expectTokenStream([
+        const matchToken = createTokenMatcher([
             {
                 "surface_form": "かも",
                 "pos": "助詞",
@@ -90,19 +89,19 @@ describe("expectTokenStream", function() {
                 "pronunciation": "ナイ"
             }
         ];
-        let resultTokens = [];
-        let resultSkipped = [];
+        let resultTokens: Token[] = [];
+        let resultSkipped: boolean[] = [];
         const result = tokens.some(token => {
-            const {match, tokens, skipped} = expectToken(token);
+            const {match, tokens, skipped} = matchToken(token);
             if (!match) {
-                assert(tokens === undefined);
+                assert.deepStrictEqual(tokens, []);
             }
             resultTokens = tokens;
             resultSkipped = skipped;
             return match;
         });
-        assert(result);
-        assert.equal(resultTokens.length, 2);
-        assert.deepEqual(resultSkipped, [false, true, true, false, true, true]);
+        assert.ok(result);
+        assert.strictEqual(resultTokens.length, 2);
+        assert.deepStrictEqual(resultSkipped, [false, true, true, false, true, true]);
     });
 });
