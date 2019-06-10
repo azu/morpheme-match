@@ -3,14 +3,14 @@
 import ReduceStore from "../base/ReduceStore";
 import AnalyzerState from "./AnalyzerState";
 export default class AnalyzerStore extends ReduceStore {
-    constructor({analyzedRepository}) {
+    constructor({ analyzedRepository }) {
         super();
         this.state = new AnalyzerState();
         this.onDispatch(payload => {
             this.setState(this.state.reduce(payload));
         });
-        analyzedRepository.onChange((analyzer) => {
-            this.setState(new AnalyzerState(Object.assign({}, this.state, {analyzer})));
+        analyzedRepository.onChange(analyzer => {
+            this.setState(new AnalyzerState(Object.assign({}, this.state, { analyzer })));
         });
     }
 

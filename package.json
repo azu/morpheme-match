@@ -5,7 +5,8 @@
   "scripts": {
     "bootstrap": "lerna bootstrap && npm run build",
     "build": "lerna run build",
-    "test": "lerna run test"
+    "test": "lerna run test",
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\""
   },
   "workspaces": {
     "packages": [
@@ -26,6 +27,25 @@
   "homepage": "https://github.com/azu/morpheme-match#readme",
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
-    "lerna": "^3.14.1"
+    "husky": "^2.4.0",
+    "lerna": "^3.14.1",
+    "lint-staged": "^8.2.0",
+    "prettier": "^1.18.2"
+  },
+  "prettier": {
+    "singleQuote": false,
+    "printWidth": 120,
+    "tabWidth": 4
+  },
+  "husky": {
+    "hooks": {
+      "precommit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

@@ -1,34 +1,55 @@
-// LICENSE : MIT
-"use strict";
-function matchToken(token, expectShape) {
-    return Object.keys(expectShape).every(key => {
+export type Token = {
+    surface_form: string;
+    pos: string;
+    pos_detail_1: string;
+    pos_detail_2: string;
+    pos_detail_3: string;
+    conjugated_type: string;
+    conjugated_form: string;
+    basic_form: string;
+    reading: string;
+    pronunciation: string;
+};
+
+export type ExpectedTokenAdditional = {
+    _skippable?: boolean;
+};
+export type ExpectedToken = Partial<Token> & ExpectedTokenAdditional;
+export type MatchResult = {
+    match: boolean;
+    tokens: Token[];
+    skipped: boolean[];
+};
+
+function matchToken(token: Token, expectedToken: ExpectedToken) {
+    return Object.keys(expectedToken).every(key => {
         // Ignore start with _ key
         if (key[0] === "_") {
             return true;
         }
-        const actualValue = token[key];
+        const expectedKey = key as keyof Partial<Token>;
+        const actualValue = token[expectedKey];
         // support multiple value
         // "pos": ["名詞", "副詞"]
-        const expectedValues = Array.isArray(expectShape[key]) ? expectShape[key] : [expectShape[key]];
+        const expectedValue = expectedToken[expectedKey];
+        const expectedValues = Array.isArray(expectedValue) ? expectedValue : [expectedValue];
         return expectedValues.some(expectedValue => {
             return actualValue === expectedValue;
         });
-    })
+    });
 }
 
 /**
  * Create matcher function that return { match : true , tokens []} if match the `token`.
- * @param {Object[]} matchedTokens
- * @returns {function(token:Object)}
  */
-module.exports = function createTokenMatcher(matchedTokens) {
+export function createTokenMatcher(expectedTokens: ExpectedToken[]) {
     let currentTokenPosition = 0;
-    const tokenCount = matchedTokens.length;
-    const matchTokens = [];
-    const matchSkipped = [];
-    return (token, index) => {
+    const tokenCount = expectedTokens.length;
+    const matchTokens: Token[] = [];
+    const matchSkipped: boolean[] = [];
+    return (token: Token) => {
         while (currentTokenPosition < tokenCount) {
-            const expectedToken = matchedTokens[currentTokenPosition];
+            const expectedToken = expectedTokens[currentTokenPosition];
             if (matchToken(token, expectedToken)) {
                 matchTokens.push(token);
                 matchSkipped.push(false);
@@ -56,11 +77,13 @@ module.exports = function createTokenMatcher(matchedTokens) {
             return {
                 match: true,
                 tokens: tokens,
-                skipped: skipped,
+                skipped: skipped
             };
         }
         return {
-            match: false
+            match: false,
+            tokens: [],
+            skipped: []
         };
-    }
-};
+    };
+}

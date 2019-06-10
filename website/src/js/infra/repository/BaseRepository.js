@@ -1,6 +1,6 @@
 const EventEmitter = require("events");
-const REPOSITORY_CHANGE = 'REPOSITORY_CHANGE';
-import MemoryDB from './adpter/MemoryDB';
+const REPOSITORY_CHANGE = "REPOSITORY_CHANGE";
+import MemoryDB from "./adpter/MemoryDB";
 /**
  * @template T
  * @constructor
@@ -42,7 +42,7 @@ export default class BaseRepository extends EventEmitter {
      * @param {string} id
      * @returns {T}
      */
-    findById({id}) {
+    findById({ id }) {
         return this._get(id);
     }
 
@@ -72,7 +72,7 @@ export default class BaseRepository extends EventEmitter {
      * Remove domain from database
      * @param {string} id
      */
-    remove({id}) {
+    remove({ id }) {
         this._database.delete(`${this._name}.${id}`);
         this.emit(REPOSITORY_CHANGE);
     }
@@ -84,4 +84,4 @@ export default class BaseRepository extends EventEmitter {
     onChange(handler) {
         this.on(REPOSITORY_CHANGE, handler);
     }
-};
+}

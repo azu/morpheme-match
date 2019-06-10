@@ -22,8 +22,8 @@ Write following:
 See example code with [azu.github.io/morpheme-match/#名詞(かも)しれない](http://azu.github.io/morpheme-match/#名詞(かも)しれない).
 
 ```js
-const createTokenMatcher = require("morpheme-match");
-const expectToken = createTokenMatcher([
+import {createTokenMatcher} from "morpheme-match";
+const matchToken = createTokenMatcher([
     {
         "surface_form": "かも",
         "pos": "助詞",
@@ -89,7 +89,7 @@ const tokens = [
     }
 ];
 const result = tokens.some(token => {
-    const {match} = expectToken(token);
+    const {match} = matchToken(token);
     return match;
 });
 console.log(result);// true
@@ -101,7 +101,7 @@ If want to get matched token, write following:
 ```js
 let resultTokens = [];
 const result = tokens.some(token => {
-    const {match, tokens, skipped} = expectToken(token);
+    const {match, tokens, skipped} = matchToken(token);
     resultTokens = tokens;
     return match;
 });
@@ -125,7 +125,7 @@ console.log(resultTokens);
 morpheme-matchは`_`から始まるキーを無視するため、メタ情報は`_`で書き込む事ができます。
 
 ```js
-const expectToken = createTokenMatcher([
+const matchToken = createTokenMatcher([
     {
         "surface_form": "かも",
         "pos": "助詞",
@@ -146,7 +146,7 @@ const expectToken = createTokenMatcher([
 
 
 ```js
-const expectToken = createTokenMatcher([
+const matchToken = createTokenMatcher([
     {
         "surface_form": "かも",
     },

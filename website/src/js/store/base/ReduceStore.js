@@ -1,13 +1,13 @@
 // LICENSE : MIT
 "use strict";
-import {Store} from "almin";
+import { Store } from "almin";
 export default class ReduceStore extends Store {
     constructor() {
         super();
         /**
          * @type {ReduceState}
          **/
-        this.state = null
+        this.state = null;
     }
 
     /**
