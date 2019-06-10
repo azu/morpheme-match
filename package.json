@@ -1,48 +1,31 @@
 {
-  "name": "morpheme-match",
+  "private": true,
+  "name": "root",
+  "veraion": "1.2.1",
+  "scripts": {
+    "bootstrap": "lerna bootstrap && npm run build",
+    "build": "lerna run build",
+    "test": "lerna run test"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "website"
+    ]
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/azu/morpheme-match.git"
+    "url": "git+https://github.com/azu/morpheme-match.git"
   },
+  "keywords": [],
   "author": "azu",
-  "email": "azuciao@gmail.com",
-  "homepage": "https://github.com/azu/morpheme-match",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/azu/morpheme-match/issues"
   },
-  "files": [
-    "src/",
-    "lib/"
-  ],
-  "version": "1.2.1",
-  "main": "lib/morpheme-match.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "mocha test/",
-    "build": "NODE_ENV=production babel src --out-dir lib --source-maps",
-    "watch": "babel src --out-dir lib --watch --source-maps",
-    "prepublish": "npm run --if-present build",
-    "build:website": "cd website && npm i && npm run build"
-  },
-  "keywords": [
-    "morpheme",
-    "形態素",
-    "japanese",
-    "text"
-  ],
-  "description": "match function that match token(形態素解析) with sentence.",
+  "homepage": "https://github.com/azu/morpheme-match#readme",
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
-    "babel-cli": "^6.9.0",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-jsdoc-to-assert": "^2.0.1",
-    "babel-preset-power-assert": "^1.0.0",
-    "babel-register": "^6.9.0",
-    "mocha": "^2.5.3",
-    "power-assert": "^1.4.1"
+    "lerna": "^3.14.1"
   }
 }

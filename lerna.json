@@ -1,0 +1,10 @@
+{
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "includeMergedTags": true,
+  "packages": [
+    "packages/*",
+    "website"
+  ],
+  "version": "0.0.0"
+}

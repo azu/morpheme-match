@@ -5,6 +5,12 @@ env:
   global:
     - GH_USER_EMAIL="azuciao@gmail.com"
     - GH_USER_NAME="azu"
+cache: yarn
+before_install:
+  - npm install -g yarn@latest
+install:
+  - yarn install --frozen-lockfile
+  - yarn run bootstrap
 after_success:
   - |
 

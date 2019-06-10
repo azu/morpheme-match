@@ -1,17 +1,5 @@
 {
   "presets": [
-    "es2015",
-    "react"
-  ],
-  "plugins": [
-    "transform-runtime"
-  ],
-  "env": {
-    "development": {
-      "presets": [
-        "jsdoc-to-assert",
-        "power-assert"
-      ]
-    }
-  }
+    "@babel/preset-env"
+  ]
 }

@@ -1,6 +1,7 @@
 {
-  "name": "morpheme-match-website",
   "private": true,
+  "version": "1.2.1",
+  "name": "website",
   "files": [
     "src/",
     "lib/"
@@ -10,50 +11,29 @@
   },
   "scripts": {
     "test": "mocha test/",
-    "clean": "rimraf public/build && mkdirp public/build",
-    "start": "npm-run-all clean --parallel watch:css server",
-    "server": "NODE_ENV=development webpack-dev-server -d --hot --content-base ./public --open",
-    "build:js": "NODE_ENV=production webpack -p",
-    "build:css": "postcss --config postcss.config.js",
-    "build": "npm-run-all clean --parallel build:*",
-    "watch:js": "NODE_ENV=development webpack -d --watch",
-    "watch:css": "chokidar --initial 'src/**/*.css' -c 'postcss --config postcss.config.js'",
-    "watch": "npm-run-all clean --parallel watch:*",
-    "update:sw": "sw-precache --config=sw-precache-config.json && mv service-worker.js public",
-    "prepublish": "npm run --if-present build"
+    "copy-dict": "mkdir -p dist/dict && cp -r public/dict/* dist/dict",
+    "clean": "rimraf dist",
+    "prestart": "npm-run-all -s clean copy-dict",
+    "start": "parcel public/index.html",
+    "prebuild": "npm-run-all -s clean copy-dict",
+    "build": "parcel build public/index.html --public-url ./",
+    "update:sw": "sw-precache --config=sw-precache-config.json && mv service-worker.js public"
   },
   "keywords": [
     "morpheme",
-    "形態素",
+    "形態素解析",
     "japanese",
     "text"
   ],
   "description": "",
   "devDependencies": {
-    "autoprefixer": "^6.3.6",
-    "babel-cli": "^6.9.0",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-transform-runtime": "^6.9.0",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-jsdoc-to-assert": "^2.0.1",
-    "babel-preset-power-assert": "^1.0.0",
-    "babel-preset-react": "^6.5.0",
-    "babel-register": "^6.9.0",
-    "chokidar-cli": "^1.2.0",
-    "json-loader": "^0.5.4",
+    "@babel/core": "^7.4.5",
     "mocha": "^2.5.3",
     "npm-run-all": "^1.7.0",
-    "postcss-calc": "^5.2.0",
-    "postcss-cli": "^2.5.1",
-    "postcss-custom-media": "^5.0.1",
-    "postcss-custom-properties": "^5.0.0",
-    "postcss-easy-import": "^1.0.1",
-    "postcss-reporter": "^1.3.3",
+    "parcel-bundler": "^1.12.3",
     "power-assert": "^1.4.1",
     "rimraf": "^2.5.2",
-    "sw-precache": "^4.0.0",
-    "webpack": "^2.1.0-beta.8",
-    "webpack-dev-server": "^2.1.0-beta.0"
+    "sw-precache": "^4.0.0"
   },
   "dependencies": {
     "almin": "^0.4.4",
@@ -63,11 +43,23 @@
     "history": "^3.0.0",
     "kuromojin": "^1.3.0",
     "map-like": "^1.0.1",
-    "morpheme-match": "file:..",
+    "morpheme-match": "^1.2.1",
     "query-string": "^4.2.2",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-github-corner": "^0.3.0",
     "usertiming": "^0.1.8"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
