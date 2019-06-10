@@ -1,28 +1,19 @@
 // MIT © 2016 azu
 "use strict";
-const assert = require("assert");
-import Expector from "./Expector";
+import {ExpectedDictionary, Expector} from "./Expector";
+import {Token} from "morpheme-match/lib/morpheme-match";
+
+export type MatchResult = {
+    tokens: Token[];
+    index: number;
+    skipped: boolean[];
+    dict: ExpectedDictionary
+}
+
 /**
- * @typedef {Object} ExpectedDictionary
- * @property {Object[]} tokens kuromoji's token list
- * @property {string} [message]
- * @property {string} [expected]
- * @public
+ * Create Matcher function for match all multiple tokens
  */
-/**
- * @typedef {Object} MatchResult
- * @property {Object[]} tokens match tokens,
- * @property {number} index index of first match token
- * @property {boolean[]} skipped skipped values for tokens
- * @property {ExpectedDictionary[]} dict dictionary defined by you
- * @public
- */
-/**
- * @param {ExpectedDictionary[]} dictionaries
- * @return {morphemeMatchAll}
- * @public
- */
-function createMatcher(dictionaries) {
+export function createMatcher(dictionaries: ExpectedDictionary[]) {
     const expectors = dictionaries.map(dict => {
         return new Expector(dict);
     });
@@ -33,11 +24,8 @@ function createMatcher(dictionaries) {
      * @function morphemeMatchAll
      * @public
      */
-    return function morphemeMatchAll(actualTokens) {
-        /**
-         * @type {MatchResult[]}
-         */
-        const matchResults = [];
+    return function morphemeMatchAll(actualTokens: Token[]) {
+        const matchResults: MatchResult[] = [];
         actualTokens.forEach(actualToken => {
             expectors.forEach(expector => {
                 const {match, tokens, skipped} = expector.match(actualToken);
@@ -60,4 +48,3 @@ function createMatcher(dictionaries) {
         return matchResults;
     };
 }
-module.exports = createMatcher;

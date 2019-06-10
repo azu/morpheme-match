@@ -15,6 +15,11 @@ export type ExpectedTokenAdditional = {
     _skippable?: boolean
 };
 export type ExpectedToken = Partial<Token> & ExpectedTokenAdditional;
+export type MatchResult = {
+    match: boolean;
+    tokens: Token[]
+    skipped: boolean[]
+};
 
 function matchToken(token: Token, expectedToken: ExpectedToken) {
     return Object.keys(expectedToken).every(key => {

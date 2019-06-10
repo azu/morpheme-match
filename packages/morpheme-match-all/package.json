@@ -1,52 +1,52 @@
 {
-  "directories": {
-    "test": "test"
+  "name": "morpheme-match-all",
+  "version": "1.2.0",
+  "description": "A wrapper of morpheme-match API. Match all kuromoji's tokens.",
+  "keywords": [
+    "japanese",
+    "kuromoji",
+    "morphological"
+  ],
+  "homepage": "https://github.com/azu/morpheme-match-all",
+  "bugs": {
+    "url": "https://github.com/azu/morpheme-match-all/issues"
   },
-  "author": "azu",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azu/morpheme-match-all.git"
+  },
   "license": "MIT",
+  "author": "azu",
   "files": [
     "bin/",
     "lib/",
     "src/"
   ],
-  "name": "morpheme-match-all",
-  "version": "1.2.0",
-  "description": "A wrapper of morpheme-match API. Match all kuromoji's tokens.",
   "main": "lib/morpheme-match-all.js",
+  "types": "lib/morpheme-match-all.d.ts",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
-    "test": "mocha test/",
-    "build": "NODE_ENV=production babel src --out-dir lib --source-maps",
-    "watch": "babel src --out-dir lib --watch --source-maps",
+    "build": "cross-env NODE_ENV=production tsc -p .",
     "docs": "documentation build --access public -f md l -o out.md src/morpheme-match-all.js && cat out.md | add-text-to-markdown README.md --section \"Usage\" --write; rm out.md",
-    "prepublish": "npm run docs && npm run --if-present build"
-  },
-  "keywords": [
-    "kuromoji",
-    "morphological",
-    "japanese"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/azu/morpheme-match-all.git"
-  },
-  "bugs": {
-    "url": "https://github.com/azu/morpheme-match-all/issues"
-  },
-  "homepage": "https://github.com/azu/morpheme-match-all",
-  "devDependencies": {
-    "add-text-to-markdown": "^2.0.0",
-    "babel-cli": "^6.18.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-jsdoc-to-assert": "^4.0.0",
-    "babel-preset-power-assert": "^1.0.0",
-    "babel-register": "^6.18.0",
-    "documentation": "^9.1.1",
-    "documentation-markdown-api-theme": "^1.0.2",
-    "kuromojin": "^1.3.2",
-    "mocha": "^5.2.0",
-    "power-assert": "^1.4.2"
+    "prepublish": "npm run --if-present build",
+    "test": "mocha \"test/**/*.{js,ts}\"",
+    "watch": "tsc -p . --watch"
   },
   "dependencies": {
     "morpheme-match": "^1.2.1"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.0.7",
+    "cross-env": "^5.2.0",
+    "documentation": "^9.1.1",
+    "kuromojin": "^1.3.2",
+    "mocha": "^6.1.4",
+    "power-assert": "^1.4.2",
+    "ts-node": "^8.2.0",
+    "ts-node-test-register": "^8.0.1",
+    "typescript": "^3.5.1"
   }
 }
