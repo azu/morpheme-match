@@ -1,14 +1,14 @@
 // MIT © 2016 azu
 "use strict";
-import {ExpectedDictionary, Expector} from "./Expector";
-import {Token} from "morpheme-match/lib/morpheme-match";
+import { ExpectedDictionary, Expector } from "./Expector";
+import { Token } from "morpheme-match/lib/morpheme-match";
 
 export type MatchResult = {
     tokens: Token[];
     index: number;
     skipped: boolean[];
-    dict: ExpectedDictionary
-}
+    dict: ExpectedDictionary;
+};
 
 /**
  * Create Matcher function for match all multiple tokens
@@ -28,7 +28,7 @@ export function createMatcher(dictionaries: ExpectedDictionary[]) {
         const matchResults: MatchResult[] = [];
         actualTokens.forEach(actualToken => {
             expectors.forEach(expector => {
-                const {match, tokens, skipped} = expector.match(actualToken);
+                const { match, tokens, skipped } = expector.match(actualToken);
                 if (!match) {
                     return;
                 }

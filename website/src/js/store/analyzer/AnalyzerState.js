@@ -8,7 +8,7 @@ export default class AnalyzerState extends ReduceState {
      * @param {Analyzer} [analyzer]
      * @param {boolean} initialized
      */
-    constructor({analyzer = {}, initialized} = {}) {
+    constructor({ analyzer = {}, initialized } = {}) {
         super();
         this.analyzer = analyzer;
         this.initialized = initialized;
@@ -23,7 +23,7 @@ export default class AnalyzerState extends ReduceState {
         const matchedTokens = this.tokens.map(token => token.toJSON());
         const expectToken = createTokenMatcher(matchedTokens);
         const isMatch = this.testTokens.some(token => {
-            const {match, tokens} = expectToken(token);
+            const { match, tokens } = expectToken(token);
             matchedToken = tokens;
             return match;
         });
@@ -32,11 +32,11 @@ export default class AnalyzerState extends ReduceState {
             return {
                 match: isMatch,
                 value
-            }
+            };
         }
         return {
             match: isMatch
-        }
+        };
     }
 
     get outputJSON() {
@@ -46,9 +46,11 @@ export default class AnalyzerState extends ReduceState {
     reduce(payload) {
         switch (payload.type) {
             case InitializeUseCase.Events.didInitialized:
-                return new AnalyzerState(Object.assign({}, this, {
-                    initialized: true
-                }));
+                return new AnalyzerState(
+                    Object.assign({}, this, {
+                        initialized: true
+                    })
+                );
             default:
                 return this;
         }

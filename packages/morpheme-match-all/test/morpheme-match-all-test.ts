@@ -3,8 +3,8 @@
 import * as assert from "assert";
 
 const kuromojin = require("kuromojin");
-import {createMatcher} from "../src/morpheme-match-all";
-import {Token} from "morpheme-match";
+import { createMatcher } from "../src/morpheme-match-all";
+import { Token } from "morpheme-match";
 
 describe("morpheme-match-all", () => {
     it("should return matcher function", () => {

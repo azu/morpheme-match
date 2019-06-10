@@ -1,6 +1,6 @@
 // LICENSE : MIT
 "use strict";
-import {UseCase} from "almin";
+import { UseCase } from "almin";
 import analyzedRepository from "../../infra/repository/AnalyzerRepository";
 export default class UpdateAnalyzedTextUseCase extends UseCase {
     static create() {
@@ -12,7 +12,7 @@ export default class UpdateAnalyzedTextUseCase extends UseCase {
     /**
      * @param {AnalyzedRepository} analyzedRepository
      */
-    constructor({analyzedRepository}) {
+    constructor({ analyzedRepository }) {
         super();
         this.analyzedRepository = analyzedRepository;
     }

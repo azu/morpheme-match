@@ -1,6 +1,6 @@
 // LICENSE : MIT
 "use strict";
-require('usertiming');
+require("usertiming");
 require("bulma/css/bulma.css");
 require("./index.css");
 import React from "react";
@@ -10,9 +10,9 @@ import AppLocator from "./AppLocator";
 // store
 import AppStoreGroup from "./js/store/AppStore";
 // context
-import {Context, Dispatcher} from "almin";
+import { Context, Dispatcher } from "almin";
 import AlminLogger from "almin-logger";
-import {createHistory} from 'history';
+import { createHistory } from "history";
 
 const history = createHistory();
 // instances
@@ -34,4 +34,4 @@ AppLocator.context = appContext;
 AppLocator.history = history;
 
 // entry point
-ReactDOM.render(<AppBootStrap/>, document.getElementById("js-app"));
+ReactDOM.render(<AppBootStrap />, document.getElementById("js-app"));

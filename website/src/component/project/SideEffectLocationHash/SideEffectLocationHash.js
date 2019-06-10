@@ -3,7 +3,6 @@
 const React = require("react");
 import AppLocator from "../../../AppLocator";
 export default class SideEffectLocationHash extends React.Component {
-
     constructor() {
         super();
     }
@@ -17,7 +16,7 @@ export default class SideEffectLocationHash extends React.Component {
         if (this.props.text) {
             AppLocator.history.push({
                 pathname: location.pathname,
-                search: `?text=${this.props.text}`,
+                search: `?text=${this.props.text}`
             });
         } else {
             // empt
@@ -28,7 +27,6 @@ export default class SideEffectLocationHash extends React.Component {
         }
         return null;
     }
-
 
     _updateHash(text) {
         if (text && text.length > 0) {

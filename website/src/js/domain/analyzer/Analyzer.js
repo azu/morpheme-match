@@ -2,7 +2,7 @@
 "use strict";
 import Token from "../token/Token";
 export default class Analyzer {
-    constructor({tokenizer}) {
+    constructor({ tokenizer }) {
         this.currentText = "";
         this.analyzedTokens = [];
         this.tokenizer = tokenizer;
@@ -24,12 +24,15 @@ export default class Analyzer {
         const matchStartIndex = matchResult ? matchResult.index : -1;
         const matchEndIndex = matchStartIndex + matchText.length;
         this.currentText = text;
-        this.analyzedTokens = this.tokenizer.tokenize(allText).filter(token => {
-            const tokenIndex = token.word_position - 1;
-            return matchStartIndex < tokenIndex && tokenIndex <= matchEndIndex;
-        }).map(rawToken => {
-            return new Token(rawToken);
-        });
+        this.analyzedTokens = this.tokenizer
+            .tokenize(allText)
+            .filter(token => {
+                const tokenIndex = token.word_position - 1;
+                return matchStartIndex < tokenIndex && tokenIndex <= matchEndIndex;
+            })
+            .map(rawToken => {
+                return new Token(rawToken);
+            });
         return this.analyzedTokens;
     }
 

@@ -16,7 +16,7 @@ export default class ReduceState {
         if (this === targetState) {
             return true;
         }
-        return Object.keys(this).every((key) => {
+        return Object.keys(this).every(key => {
             return this[key] === targetState[key];
         });
     }

@@ -12,13 +12,13 @@ export type Token = {
 };
 
 export type ExpectedTokenAdditional = {
-    _skippable?: boolean
+    _skippable?: boolean;
 };
 export type ExpectedToken = Partial<Token> & ExpectedTokenAdditional;
 export type MatchResult = {
     match: boolean;
-    tokens: Token[]
-    skipped: boolean[]
+    tokens: Token[];
+    skipped: boolean[];
 };
 
 function matchToken(token: Token, expectedToken: ExpectedToken) {
@@ -32,13 +32,11 @@ function matchToken(token: Token, expectedToken: ExpectedToken) {
         // support multiple value
         // "pos": ["名詞", "副詞"]
         const expectedValue = expectedToken[expectedKey];
-        const expectedValues = Array.isArray(expectedValue)
-            ? expectedValue
-            : [expectedValue];
+        const expectedValues = Array.isArray(expectedValue) ? expectedValue : [expectedValue];
         return expectedValues.some(expectedValue => {
             return actualValue === expectedValue;
         });
-    })
+    });
 }
 
 /**
@@ -79,13 +77,13 @@ export function createTokenMatcher(expectedTokens: ExpectedToken[]) {
             return {
                 match: true,
                 tokens: tokens,
-                skipped: skipped,
+                skipped: skipped
             };
         }
         return {
             match: false,
             tokens: [],
-            skipped: [],
+            skipped: []
         };
-    }
+    };
 }
