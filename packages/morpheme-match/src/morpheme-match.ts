@@ -9,12 +9,16 @@ export type Token = {
     basic_form: string;
     reading: string;
     pronunciation: string;
+    word_position: number;
 };
 
 export type ExpectedTokenAdditional = {
     _skippable?: boolean;
 };
-export type ExpectedToken = Partial<Token> & ExpectedTokenAdditional;
+
+export type ExpectedToken = Partial<Token> & ExpectedTokenAdditional & {
+    [index: string]: any;
+};
 export type MatchResult = {
     match: boolean;
     tokens: Token[];
