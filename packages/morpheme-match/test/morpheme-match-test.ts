@@ -3,19 +3,19 @@ import {createTokenMatcher, Token} from "../src/morpheme-match";
 
 describe("createTokenMatcher", function () {
     it("should return {match, tokens, skipped}", function () {
-        // http://localhost:8080/#名詞(かも)しれない
+        // http://localhost:1234/#名詞(かも)しれない
         const matchToken = createTokenMatcher([
             {
-                surface_form: "かも",
-                pos: "助詞",
-                pos_detail_1: "副助詞",
-                pos_detail_2: "*",
-                pos_detail_3: "*",
-                conjugated_type: "*",
-                conjugated_form: "*",
-                basic_form: "かも",
-                reading: "カモ",
-                pronunciation: "カモ"
+                "surface_form": "かも",
+                "pos": "名詞",
+                "pos_detail_1": "一般",
+                "pos_detail_2": "*",
+                "pos_detail_3": "*",
+                "conjugated_type": "*",
+                "conjugated_form": "*",
+                "basic_form": "かも",
+                "reading": "カモ",
+                "pronunciation": "カモ"
             },
             {
                 surface_form: "、",
