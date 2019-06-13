@@ -41,6 +41,9 @@ describe("createTokenMatcher", function () {
         // http://localhost:1234/?text=名詞かもしれない
         const tokens = [
                 {
+                    "word_id": 512230,
+                    "word_type": "KNOWN",
+                    "word_position": 1,
                     "surface_form": "名詞",
                     "pos": "名詞",
                     "pos_detail_1": "一般",
@@ -50,11 +53,12 @@ describe("createTokenMatcher", function () {
                     "conjugated_form": "*",
                     "basic_form": "名詞",
                     "reading": "メイシ",
-                    "pronunciation": "メイシ",
-                    "word_position": 1
+                    "pronunciation": "メイシ"
                 },
-                // hit!
                 {
+                    "word_id": 824490,
+                    "word_type": "KNOWN",
+                    "word_position": 3,
                     "surface_form": "かも",
                     "pos": "名詞",
                     "pos_detail_1": "一般",
@@ -64,10 +68,12 @@ describe("createTokenMatcher", function () {
                     "conjugated_form": "*",
                     "basic_form": "かも",
                     "reading": "カモ",
-                    "pronunciation": "カモ",
-                    "word_position": 3
+                    "pronunciation": "カモ"
                 },
                 {
+                    "word_id": 3435350,
+                    "word_type": "KNOWN",
+                    "word_position": 5,
                     "surface_form": "しれ",
                     "pos": "動詞",
                     "pos_detail_1": "自立",
@@ -77,10 +83,12 @@ describe("createTokenMatcher", function () {
                     "conjugated_form": "連用形",
                     "basic_form": "しれる",
                     "reading": "シレ",
-                    "pronunciation": "シレ",
-                    "word_position": 5
+                    "pronunciation": "シレ"
                 },
                 {
+                    "word_id": 182090,
+                    "word_type": "KNOWN",
+                    "word_position": 7,
                     "surface_form": "ない",
                     "pos": "形容詞",
                     "pos_detail_1": "自立",
@@ -90,8 +98,7 @@ describe("createTokenMatcher", function () {
                     "conjugated_form": "基本形",
                     "basic_form": "ない",
                     "reading": "ナイ",
-                    "pronunciation": "ナイ",
-                    "word_position": 7
+                    "pronunciation": "ナイ"
                 }
             ]
 
