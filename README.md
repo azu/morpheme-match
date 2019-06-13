@@ -1,4 +1,4 @@
-# morpheme-match
+# morpheme-match [![Build Status](https://travis-ci.org/azu/morpheme-match.svg?branch=master)](https://travis-ci.org/azu/morpheme-match)
 
 A monorepo for morpheme-match.
 
