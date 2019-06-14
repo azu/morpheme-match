@@ -1,0 +1,28 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# 2.0.0 (2019-06-14)
+
+
+### Bug Fixes
+
+* **api:** fix results `expected` to `dict` ([08156e8](https://github.com/azu/morpheme-match-all/commit/08156e8))
+
+
+### Code Refactoring
+
+* **morpheme-match-all:** Convert to TypeScript ([8810ed9](https://github.com/azu/morpheme-match-all/commit/8810ed9))
+
+
+### Features
+
+* **morpheme-match-textlint:** add textlint wrapper ([#7](https://github.com/azu/morpheme-match-all/issues/7)) ([8f3be6a](https://github.com/azu/morpheme-match-all/commit/8f3be6a))
+
+
+### BREAKING CHANGES
+
+* **morpheme-match-all:** export { createTokenMatcher } instead of export default
+
+You should `import { createMatcher } from "morpheme-match-all"` instead of `import createTokenMatcher from "morpheme-match-all"`

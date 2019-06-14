@@ -1,6 +1,6 @@
 {
   "name": "morpheme-match-all",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "A wrapper of morpheme-match API. Match all kuromoji's tokens.",
   "keywords": [
     "japanese",
@@ -35,7 +35,7 @@
     "watch": "tsc -p . --watch"
   },
   "dependencies": {
-    "morpheme-match": "^1.2.1"
+    "morpheme-match": "^2.0.0"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.7",
