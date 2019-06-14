@@ -20,6 +20,6 @@ after_success:
 
         $(npm bin)/update-branch --commands "npm run build:website" \
                                  --commit-message "Update website [skip ci]" \
-                                 --directory "website/public" \
+                                 --directory "website/dist" \
                                  --distribution-branch "gh-pages" \
                                  --source-branch "master"
