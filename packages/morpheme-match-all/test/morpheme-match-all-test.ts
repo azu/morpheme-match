@@ -41,10 +41,10 @@ describe("morpheme-match-all", () => {
                     const results = matchAll(actualTokens);
                     /**
                      [ { tokens: [ [Object], [Object], [Object], [Object] ],
-    index: 1,
-    dict:
-     { message: '"することができる"は有害 http://qiita.com/takahi-i/items/a93dc2ff42af6b93f6e0',
-       tokens: [Object] } } ]
+                    index: 1,
+                    dict:
+                     { message: '"することができる"は有害 http://qiita.com/takahi-i/items/a93dc2ff42af6b93f6e0',
+                       tokens: [Object] } } ]
                      */
                     assert.strictEqual(results.length, 1);
                     assert.deepStrictEqual(results[0].skipped, [false, false, false, true, false]);
