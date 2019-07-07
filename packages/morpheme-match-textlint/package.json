@@ -35,7 +35,8 @@
     "watch": "tsc -p . --watch"
   },
   "dependencies": {
-    "morpheme-match-all": "^2.0.1"
+    "morpheme-match-all": "^2.0.1",
+    "morpheme-match": "^2.0.0"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.7",

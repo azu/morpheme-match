@@ -1,42 +1,8 @@
 import {createMatcher as createMathAll, ExpectedDictionary, ExpectedDictionaries} from "morpheme-match-all";
 
-export type Token = {
-    // 辞書内での単語ID
-    word_id: number;
-    // 単語タイプ(辞書に登録されている単語ならKNOWN; 未知語ならUNKNOWN)
-    word_type: "KNOWN" | "UNKNOWN";
-    // 表層形
-    surface_form: string;
-    // 品詞
-    pos: string;
-    // 品詞細分類1
-    pos_detail_1: string;
-    // 品詞細分類2
-    pos_detail_2: string;
-    // 品詞細分類3
-    pos_detail_3: string;
-    // 活用型
-    conjugated_type: string;
-    // 活用形
-    conjugated_form: string;
-    // 基本形
-    basic_form: string;
-    // 読み
-    reading: string;
-    // 発音
-    pronunciation: string;
-    // 単語の開始位置
-    word_position: number;
-};
+type Token = import("morpheme-match").Token;
 
-export type ExpectedTokenAdditional = {
-    _skippable?: boolean;
-};
-
-export type ExpectedToken = Partial<Token> & ExpectedTokenAdditional & {
-    [index: string]: any;
-};
-
+type ExpectedToken = import("morpheme-match").ExpectedToken;
 export type ExpectedTokenWithCapture = ExpectedToken & {
     _capture?: string
 }
@@ -118,12 +84,18 @@ export type MatchTextlintResult<T extends ExpectedTokenWithCapture> = {
     range: [number, number];
 };
 
-export const createTextlintMatcher = <T extends ExpectedTokenWithCapture>(options: ReporterOptions<T & ExpectedTokenWithCapture>) => {
+// FIXME: Want to support generics
+// But some thing wrong
+/**
+ * create textlint matcher
+ * @param options
+ */
+export const createTextlintMatcher = (options: ReporterOptions<ExpectedTokenWithCapture>) => {
     const matchAll = createMathAll(options.dictionaries);
     const tokenize = options.tokenize;
     const createMessage = options.createMessage ? options.createMessage : _createMessage;
     const createExpected = options.createExpected ? options.createExpected : _createExpected;
-    return (text: string): Promise<MatchTextlintResult<T>[]> => {
+    return (text: string): Promise<MatchTextlintResult<ExpectedTokenWithCapture>[]> => {
         return tokenize(text).then(currentTokens => {
             const matchResults = matchAll(currentTokens);
             return matchResults.map(matchResult => {
