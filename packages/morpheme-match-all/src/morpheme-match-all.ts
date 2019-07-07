@@ -15,7 +15,7 @@ export type MatchResult<T extends ExpectedToken> = {
 /**
  * Create Matcher function for match all multiple tokens
  */
-export function createMatcher<T extends ExpectedToken>(dictionaries: ExpectedDictionaries<T>) {
+export function createMatcher<T extends ExpectedToken>(dictionaries: ExpectedDictionaries<T & ExpectedToken>) {
     const expectors = dictionaries.map(dict => {
         return new Expector(dict);
     });

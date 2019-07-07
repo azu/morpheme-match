@@ -84,7 +84,7 @@ export type MatchTextlintResult<T extends ExpectedTokenWithCapture> = {
     range: [number, number];
 };
 
-export const createTextlintMatcher = <T extends ExpectedTokenWithCapture>(options: ReporterOptions<T>) => {
+export const createTextlintMatcher = <T extends ExpectedTokenWithCapture>(options: ReporterOptions<T & ExpectedTokenWithCapture>) => {
     const matchAll = createMathAll(options.dictionaries);
     const tokenize = options.tokenize;
     const createMessage = options.createMessage ? options.createMessage : _createMessage;
