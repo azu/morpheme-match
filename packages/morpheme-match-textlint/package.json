@@ -1,6 +1,6 @@
 {
   "name": "morpheme-match-textlint",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "morpheme-match for textlint rule.",
   "keywords": [
     "japanese",
@@ -35,8 +35,8 @@
     "watch": "tsc -p . --watch"
   },
   "dependencies": {
-    "morpheme-match-all": "^2.0.1",
-    "morpheme-match": "^2.0.0"
+    "morpheme-match": "^2.0.0",
+    "morpheme-match-all": "^2.0.1"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.7",
