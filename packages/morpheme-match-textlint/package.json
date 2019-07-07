@@ -1,6 +1,6 @@
 {
   "name": "morpheme-match-textlint",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "morpheme-match for textlint rule.",
   "keywords": [
     "japanese",
