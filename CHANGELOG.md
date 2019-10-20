@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.6](https://github.com/azu/morpheme-match/compare/v2.0.5...v2.0.6) (2019-10-20)
+
+
+### Bug Fixes
+
+* **morpheme-match-textlint:** fix type ([e2d55c5](https://github.com/azu/morpheme-match/commit/e2d55c5))
+
+
+
+
+
 ## [2.0.5](https://github.com/azu/morpheme-match/compare/v2.0.4...v2.0.5) (2019-10-20)
 
 
