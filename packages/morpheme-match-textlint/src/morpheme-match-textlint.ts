@@ -1,4 +1,4 @@
-import {createMatcher as createMathAll, ExpectedDictionary, ExpectedDictionaries} from "morpheme-match-all";
+import { createMatcher as createMathAll, ExpectedDictionary } from "morpheme-match-all";
 
 type Token = import("morpheme-match").Token;
 
@@ -59,8 +59,8 @@ const _createExpected = <T extends ExpectedTokenWithCapture>({expected, matcherT
     return replaceWithCaptureTokens(expected, matcherTokens, actualTokens);
 };
 
-export type ReporterOptions<T extends ExpectedTokenWithCapture> = {
-    dictionaries: ExpectedDictionaries<T>
+export type ReporterOptions<T extends ExpectedTokenWithCapture, Dictionary extends ExpectedDictionary<T>> = {
+    dictionaries: Dictionary[]
     tokenize: (text: string) => Promise<Token[]>;
     createMessage?: ({message, matcherTokens, actualTokens}: {
         message: string,
@@ -90,7 +90,7 @@ export type MatchTextlintResult<T extends ExpectedTokenWithCapture> = {
  * create textlint matcher
  * @param options
  */
-export const createTextlintMatcher = (options: ReporterOptions<ExpectedTokenWithCapture>) => {
+export const createTextlintMatcher = (options: ReporterOptions<ExpectedTokenWithCapture, ExpectedDictionary<ExpectedTokenWithCapture>>) => {
     const matchAll = createMathAll(options.dictionaries);
     const tokenize = options.tokenize;
     const createMessage = options.createMessage ? options.createMessage : _createMessage;
