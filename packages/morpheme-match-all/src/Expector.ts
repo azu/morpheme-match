@@ -9,10 +9,10 @@ export type ExpectedDictionary<T extends ExpectedToken> = {
     expected?: string;
 };
 
-export class Expector<T extends ExpectedToken> {
+export class Expector<T extends ExpectedToken, Dictionary extends ExpectedDictionary<T>> {
     private matcher: any;
 
-    constructor(public dict: ExpectedDictionary<T>) {
+    constructor(public dict: Dictionary) {
         assert.ok(Array.isArray(dict["tokens"]), `"tokens" property is required. ${dict}`);
         this.matcher = createTokenMatcher(dict.tokens);
     }
