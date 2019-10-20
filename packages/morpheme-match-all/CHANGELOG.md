@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://github.com/azu/morpheme-match-all/compare/v2.0.3...v2.0.4) (2019-10-20)
+
+**Note:** Version bump only for package morpheme-match-all
+
+
+
+
+
 ## [2.0.1](https://github.com/azu/morpheme-match-all/compare/v2.0.0...v2.0.1) (2019-07-07)
 
 

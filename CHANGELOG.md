@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://github.com/azu/morpheme-match/compare/v2.0.3...v2.0.4) (2019-10-20)
+
+
+### Bug Fixes
+
+* **morpheme-match:** fix ExpectedToken type ([b06e276](https://github.com/azu/morpheme-match/commit/b06e276))
+
+
+
+
+
 ## [2.0.3](https://github.com/azu/morpheme-match/compare/v2.0.2...v2.0.3) (2019-07-07)
 
 
