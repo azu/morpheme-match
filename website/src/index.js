@@ -26,7 +26,7 @@ const appContext = new Context({
 // start logger
 const logger = new AlminLogger();
 logger.startLogging(appContext);
-appContext.onErrorDispatch(error => {
+appContext.events.onErrorDispatch(error => {
     console.error(error);
 });
 // global
