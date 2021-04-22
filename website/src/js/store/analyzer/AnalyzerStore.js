@@ -15,8 +15,6 @@ export default class AnalyzerStore extends ReduceStore {
     }
 
     getState() {
-        return {
-            analyzer: this.state
-        };
+        return this.state
     }
 }

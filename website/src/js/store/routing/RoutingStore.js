@@ -12,8 +12,6 @@ export default class RoutingStore extends ReduceStore {
     }
 
     getState() {
-        return {
-            routing: this.state
-        };
+        return this.state;
     }
 }

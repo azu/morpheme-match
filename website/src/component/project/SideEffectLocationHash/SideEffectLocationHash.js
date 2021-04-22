@@ -1,5 +1,6 @@
 // LICENSE : MIT
 "use strict";
+const PropTypes = require('prop-types');
 const React = require("react");
 import AppLocator from "../../../AppLocator";
 export default class SideEffectLocationHash extends React.Component {
@@ -35,6 +36,6 @@ export default class SideEffectLocationHash extends React.Component {
     }
 }
 SideEffectLocationHash.propTypes = {
-    text: React.PropTypes.string,
-    isFirstTime: React.PropTypes.bool
+    text: PropTypes.string,
+    isFirstTime: PropTypes.bool
 };

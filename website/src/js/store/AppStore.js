@@ -6,6 +6,9 @@ import RoutingStore from "./routing/RoutingStore";
 import analyzedRepository from "../infra/repository/AnalyzerRepository";
 export default class AppStore {
     static create() {
-        return new StoreGroup([new AnalyzerStore({ analyzedRepository }), new RoutingStore()]);
+        return new StoreGroup({
+            analyzer: new AnalyzerStore({ analyzedRepository }),
+            routing: new RoutingStore()
+        });
     }
 }
