@@ -1,4 +1,4 @@
-# morpheme-match [![Build Status](https://travis-ci.org/azu/morpheme-match.svg?branch=master)](https://travis-ci.org/azu/morpheme-match)
+# morpheme-match [![Actions Status: test](https://github.com/azu/morpheme-match/workflows/test/badge.svg)](https://github.com/azu/morpheme-match/actions?query=workflow%3A"test")
 
 A monorepo for morpheme-match.
 
