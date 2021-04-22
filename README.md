@@ -1,4 +1,4 @@
-# morpheme-match [![Build Status](https://travis-ci.org/azu/morpheme-match.svg?branch=master)](https://travis-ci.org/azu/morpheme-match)
+# morpheme-match [![Actions Status: test](https://github.com/azu/morpheme-match/workflows/test/badge.svg)](https://github.com/azu/morpheme-match/actions?query=workflow%3A"test")
 
 A monorepo for morpheme-match.
 
@@ -15,7 +15,7 @@ A monorepo for morpheme-match.
     - Core library
 - [morpheme-match-all](packages/morpheme-match-all)
     - A wrapper library of morpheme-match
-    - Easy to use edition
+    - Easy to use as library
 - [morpheme-match-textlint](packages/morpheme-match-textlint)
     - A wrapper for textlint
     - Use it in textlint rule
