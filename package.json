@@ -11,7 +11,8 @@
     "versionup:patch": "lerna version patch --conventional-commits",
     "versionup:minor": "lerna version minor --conventional-commits",
     "versionup:major": "lerna version major --conventional-commits",
-    "release": "lerna publish from-package"
+    "release": "lerna publish from-package",
+    "build:website": "cd website && yarn run build"
   },
   "workspaces": {
     "packages": [
@@ -31,7 +32,6 @@
   },
   "homepage": "https://github.com/azu/morpheme-match#readme",
   "devDependencies": {
-    "@alrra/travis-scripts": "^3.0.1",
     "husky": "^2.4.0",
     "lerna": "^3.14.1",
     "lint-staged": "^8.2.0",

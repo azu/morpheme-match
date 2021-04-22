@@ -19,7 +19,7 @@ jobs:
           yarn install
           yarn bootstrap
       - name: Build
-        run: yarn run build:website;
+        run: yarn run build:website
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
