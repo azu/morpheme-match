@@ -19,6 +19,8 @@ A monorepo for morpheme-match.
 - [morpheme-match-textlint](packages/morpheme-match-textlint)
     - A wrapper for textlint
     - Use it in textlint rule
+- [@textlint-ja/textlint-rule-morpheme-match](https://github.com/textlint-ja/textlint-rule-morpheme-match)
+    - A textlint rule using [morpheme-match-textlint](packages/morpheme-match-textlint)
 - [website](website)
     - Demo site
     - <https://azu.github.io/morpheme-match/>
