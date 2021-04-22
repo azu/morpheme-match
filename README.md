@@ -15,7 +15,7 @@ A monorepo for morpheme-match.
     - Core library
 - [morpheme-match-all](packages/morpheme-match-all)
     - A wrapper library of morpheme-match
-    - Easy to use edition
+    - Easy to use as library
 - [morpheme-match-textlint](packages/morpheme-match-textlint)
     - A wrapper for textlint
     - Use it in textlint rule
