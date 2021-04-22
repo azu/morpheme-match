@@ -3,7 +3,7 @@
 import Token from "../token/Token";
 
 export default class Analyzer {
-    constructor({tokenizer}) {
+    constructor({ tokenizer }) {
         this.currentText = "";
         this.analyzedTokens = [];
         this.tokenizer = tokenizer;
@@ -33,7 +33,7 @@ export default class Analyzer {
                 // ^   ^
                 // -1  -2
                 return matchResult
-                    ? (matchStartIndex - 1) < tokenIndex && tokenIndex <= (matchEndIndex - 2)
+                    ? matchStartIndex - 1 < tokenIndex && tokenIndex <= matchEndIndex - 2
                     : matchStartIndex < tokenIndex && tokenIndex <= matchEndIndex;
             })
             .map(rawToken => {

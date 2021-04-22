@@ -1,7 +1,7 @@
 // MIT © 2016 azu
 "use strict";
 import * as assert from "assert";
-import {createTokenMatcher, Token, ExpectedToken, MatchResult} from "morpheme-match";
+import { createTokenMatcher, Token, ExpectedToken, MatchResult } from "morpheme-match";
 
 export type ExpectedDictionary<T extends ExpectedToken> = {
     tokens: T[];

@@ -3,7 +3,7 @@
 import { ExpectedDictionary, Expector } from "./Expector";
 import { ExpectedToken, Token } from "morpheme-match";
 
-export type ExpectedDictionaries<T extends ExpectedToken, Dictionary extends ExpectedDictionary<T>> = Dictionary[]
+export type ExpectedDictionaries<T extends ExpectedToken, Dictionary extends ExpectedDictionary<T>> = Dictionary[];
 export { ExpectedDictionary };
 export type MatchResult<T extends ExpectedToken, Dictionary extends ExpectedDictionary<T>> = {
     tokens: Token[];
@@ -15,9 +15,9 @@ export type MatchResult<T extends ExpectedToken, Dictionary extends ExpectedDict
 /**
  * Create Matcher function for match all multiple tokens
  */
-export function createMatcher<T extends Partial<ExpectedToken>,
-    Dictionary extends Partial<ExpectedDictionary<T>>>(dictionaries: ExpectedDictionaries<T & ExpectedToken, Dictionary & ExpectedDictionary<T>>)
-    : (tokens: Token[]) => MatchResult<T & ExpectedToken, Dictionary & ExpectedDictionary<T>>[] {
+export function createMatcher<T extends Partial<ExpectedToken>, Dictionary extends Partial<ExpectedDictionary<T>>>(
+    dictionaries: ExpectedDictionaries<T & ExpectedToken, Dictionary & ExpectedDictionary<T>>
+): (tokens: Token[]) => MatchResult<T & ExpectedToken, Dictionary & ExpectedDictionary<T>>[] {
     const expectors = dictionaries.map(dict => {
         return new Expector<T & ExpectedToken, Dictionary & ExpectedDictionary<T>>(dict);
     });
@@ -32,7 +32,7 @@ export function createMatcher<T extends Partial<ExpectedToken>,
         const matchResults: MatchResult<T & ExpectedToken, Dictionary & ExpectedDictionary<T>>[] = [];
         actualTokens.forEach(actualToken => {
             expectors.forEach(expector => {
-                const {match, tokens, skipped} = expector.match(actualToken);
+                const { match, tokens, skipped } = expector.match(actualToken);
                 if (!match) {
                     return;
                 }

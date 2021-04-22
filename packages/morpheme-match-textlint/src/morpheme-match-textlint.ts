@@ -4,8 +4,8 @@ type Token = import("morpheme-match").Token;
 
 type ExpectedToken = import("morpheme-match").ExpectedToken;
 export type ExpectedTokenWithCapture = ExpectedToken & {
-    _capture?: string
-}
+    _capture?: string;
+};
 /**
  * Replace all text
  */
@@ -32,27 +32,32 @@ const replaceWithCaptureTokens = (text: string, expectedTokens: ExpectedTokenWit
     return resultText;
 };
 
-const _createMessage = <T extends ExpectedTokenWithCapture>(
-    {message, matcherTokens, actualTokens}:
-        {
-            message: string,
-            dict: ExpectedDictionary<T>,
-            matcherTokens: ExpectedTokenWithCapture[],
-            actualTokens: Token[]
-        }) => {
+const _createMessage = <T extends ExpectedTokenWithCapture>({
+    message,
+    matcherTokens,
+    actualTokens
+}: {
+    message: string;
+    dict: ExpectedDictionary<T>;
+    matcherTokens: ExpectedTokenWithCapture[];
+    actualTokens: Token[];
+}) => {
     if (!message) {
         throw new Error("message should defined");
     }
     return replaceWithCaptureTokens(message, matcherTokens, actualTokens);
 };
 
-const _createExpected = <T extends ExpectedTokenWithCapture>({expected, matcherTokens, actualTokens}:
-                                                                 {
-                                                                     expected?: string,
-                                                                     dict: ExpectedDictionary<T>,
-                                                                     matcherTokens: ExpectedTokenWithCapture[],
-                                                                     actualTokens: Token[]
-                                                                 }) => {
+const _createExpected = <T extends ExpectedTokenWithCapture>({
+    expected,
+    matcherTokens,
+    actualTokens
+}: {
+    expected?: string;
+    dict: ExpectedDictionary<T>;
+    matcherTokens: ExpectedTokenWithCapture[];
+    actualTokens: Token[];
+}) => {
     if (!expected) {
         return null;
     }
@@ -60,21 +65,29 @@ const _createExpected = <T extends ExpectedTokenWithCapture>({expected, matcherT
 };
 
 export type ReporterOptions<T extends ExpectedTokenWithCapture, Dictionary extends ExpectedDictionary<T>> = {
-    dictionaries: Dictionary[]
+    dictionaries: Dictionary[];
     tokenize: (text: string) => Promise<Token[]>;
-    createMessage?: ({message, matcherTokens, actualTokens}: {
-        message: string,
-        dict: ExpectedDictionary<T>,
-        matcherTokens: ExpectedTokenWithCapture[],
-        actualTokens: Token[]
+    createMessage?: ({
+        message,
+        matcherTokens,
+        actualTokens
+    }: {
+        message: string;
+        dict: ExpectedDictionary<T>;
+        matcherTokens: ExpectedTokenWithCapture[];
+        actualTokens: Token[];
     }) => string;
-    createExpected?: ({expected, matcherTokens, actualTokens}: {
-        expected?: string,
-        dict: ExpectedDictionary<T>,
-        matcherTokens: ExpectedTokenWithCapture[],
-        actualTokens: Token[]
+    createExpected?: ({
+        expected,
+        matcherTokens,
+        actualTokens
+    }: {
+        expected?: string;
+        dict: ExpectedDictionary<T>;
+        matcherTokens: ExpectedTokenWithCapture[];
+        actualTokens: Token[];
     }) => string;
-}
+};
 
 export type MatchTextlintResult<T extends ExpectedTokenWithCapture> = {
     message: string;
@@ -90,7 +103,9 @@ export type MatchTextlintResult<T extends ExpectedTokenWithCapture> = {
  * create textlint matcher
  * @param options
  */
-export const createTextlintMatcher = (options: ReporterOptions<ExpectedTokenWithCapture, ExpectedDictionary<ExpectedTokenWithCapture>>) => {
+export const createTextlintMatcher = (
+    options: ReporterOptions<ExpectedTokenWithCapture, ExpectedDictionary<ExpectedTokenWithCapture>>
+) => {
     const matchAll = createMathAll(options.dictionaries);
     const tokenize = options.tokenize;
     const createMessage = options.createMessage ? options.createMessage : _createMessage;
@@ -121,9 +136,7 @@ export const createTextlintMatcher = (options: ReporterOptions<ExpectedTokenWith
                     expected,
                     dict: matchResult.dict,
                     index: firstWordIndex,
-                    range: [
-                        firstWordIndex, lastWorkIndex + lastToken.surface_form.length
-                    ]
+                    range: [firstWordIndex, lastWorkIndex + lastToken.surface_form.length]
                 };
             });
         });

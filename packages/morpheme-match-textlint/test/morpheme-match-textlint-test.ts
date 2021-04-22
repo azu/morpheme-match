@@ -1,9 +1,9 @@
 // MIT © 2016 azu
 "use strict";
 import * as assert from "assert";
-import {createTextlintMatcher} from "../src/morpheme-match-textlint";
-import {dictionariesA} from "./fixtures/dictionariesA";
-import {dictionariesMultiple} from "./fixtures/dictionariesB";
+import { createTextlintMatcher } from "../src/morpheme-match-textlint";
+import { dictionariesA } from "./fixtures/dictionariesA";
+import { dictionariesMultiple } from "./fixtures/dictionariesB";
 
 const kuromojin = require("kuromojin");
 
@@ -37,7 +37,6 @@ describe("morpheme-match-textlint", () => {
         assert.strictEqual(resultB.expected, null);
         assert.strictEqual(resultB.index, 3);
         assert.deepStrictEqual(resultB.range, [3, 12]);
-
     });
     it("matchAll should return [] when no match", async () => {
         const matchAll = createTextlintMatcher({
