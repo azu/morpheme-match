@@ -1,10 +1,9 @@
 // MIT © 2016 azu
 "use strict";
 import * as assert from "assert";
-
-const kuromojin = require("kuromojin");
 import { createMatcher } from "../src/morpheme-match-all";
 import { Token } from "morpheme-match";
+import { tokenize } from "kuromojin";
 
 describe("morpheme-match-all", () => {
     it("should return matcher function", () => {
@@ -37,7 +36,7 @@ describe("morpheme-match-all", () => {
             it("should work", () => {
                 const dictionaries = require("./fixtures/dictionary");
                 const matchAll = createMatcher(dictionaries);
-                return kuromojin("解析することができます。").then((actualTokens: Token[]) => {
+                return tokenize("解析することができます。").then((actualTokens: Token[]) => {
                     const results = matchAll(actualTokens);
                     /**
                      [ { tokens: [ [Object], [Object], [Object], [Object] ],
