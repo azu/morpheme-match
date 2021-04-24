@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "mocha \"test/**/*.js\"",
-    "copy-dict": "mkdir -p dist/dict && cp -r public/dict/* dist/dict",
+    "copy-dict": "mkdir -p dist/dict && cp -r ../node_modules/kuromoji/dict/* dist/dict",
     "clean": "rimraf dist",
     "prestart": "npm-run-all -s clean copy-dict",
     "start": "parcel public/index.html",
