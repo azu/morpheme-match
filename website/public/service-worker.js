@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["dict/cc.dat.gz","547a0a9d0d3eb76ee84bfd05301e82b3"],["dict/tid.dat.gz","244d7adb5162f71ced11c5ba64be3586"],["dict/tid_map.dat.gz","70d836c01353895edf02020fb52bfa49"],["dict/unk.dat.gz","9229f1b8c742cd15ff3229ed3700112a"],["dict/unk_char.dat.gz","557c5cc25a480e1946150625face4c91"],["dict/unk_compat.dat.gz","da69ebce7400cc6ba01f5ce19d3108f1"],["dict/unk_invoke.dat.gz","6b5a7c42a945cbba596148fecc2d56b4"],["dict/unk_map.dat.gz","eda6e0354662ee169e817f5848ab56d4"],["dict/unk_pos.dat.gz","5986e78e268fa51e3e119511ec914dd9"]];
+var precacheConfig = [["dict/cc.dat.gz","05321caff24f87d1bed64fe1d44576fc"],["dict/tid.dat.gz","48d8e87b50f900b4795e55e9a70c2696"],["dict/tid_map.dat.gz","ab259890529abb432a5c20aff4efb021"],["dict/unk.dat.gz","9229f1b8c742cd15ff3229ed3700112a"],["dict/unk_char.dat.gz","557c5cc25a480e1946150625face4c91"],["dict/unk_compat.dat.gz","da69ebce7400cc6ba01f5ce19d3108f1"],["dict/unk_invoke.dat.gz","6b5a7c42a945cbba596148fecc2d56b4"],["dict/unk_map.dat.gz","eda6e0354662ee169e817f5848ab56d4"],["dict/unk_pos.dat.gz","5986e78e268fa51e3e119511ec914dd9"]];
 var cacheName = 'sw-precache-v2-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
