@@ -1,6 +1,6 @@
 // LICENSE : MIT
 "use strict";
-const getTokenizer = require("kuromojin").getTokenizer;
+import { getTokenizer } from "kuromojin";
 const isNode = typeof process !== "undefined" && process.versions && process.versions.node;
 export default class KuromojiLoader {
     /**
